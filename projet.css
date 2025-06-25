@@ -1,0 +1,888 @@
+/* projet.css */
+
+/* ===================================== */
+/* 1. Base Reset & Body      */
+/* ===================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* Ajouté pour un fond par défaut */
+  color: #333; /* Ajouté pour un texte par défaut */
+}
+
+/* ===================================== */
+/* 2. Header & Navigation    */
+/* ===================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 30px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* Responsive menu */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  nav a {
+    margin: 5px 0;
+  }
+}
+
+/* ===================================== */
+/* 3. Hero Section (Accueil) - C'EST ICI QUE LES CHANGEMENTS SONT FAITS POUR L'ESPACEMENT */
+/* ===================================== */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px; /* Ajouté pour une hauteur minimale sur des écrans variés */
+  /* Assurez-vous que le chemin de l'image est correct ici. Utilisation de karaté fond.jpg */
+  background: url('images/fond.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  flex-direction: column; /* Permet d'empiler le texte si plusieurs éléments */
+  z-index: 1; /* S'assure que le contenu est au-dessus du pseudo-élément */
+  margin-top: 75px; /* Compense la hauteur du header fixe */
+}
+
+/* Overlay pour le hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay semi-transparent */
+  z-index: 0; /* Assure que l'overlay est sous le contenu */
+}
+
+.hero > * { /* Applique z-index au contenu direct du hero pour le mettre au-dessus de l'overlay */
+  position: relative;
+  z-index: 1;
+}
+
+/* NOUVEAUX STYLES POUR LE TEXTE DANS LA SECTION HERO */
+.hero h1 {
+    font-size: 3.8rem; /* Grande taille pour le titre principal */
+    margin-bottom: 35px; /* AUGMENTÉ : Plus d'espace après le titre */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    color: white;
+    line-height: 1.2; /* Hauteur de ligne pour le titre si jamais il se coupe */
+}
+
+.hero p { /* Ciblage du paragraphe générique dans le hero */
+    font-size: 1.8rem; /* Taille de police plus grande */
+    color: #ffcc00; /* Couleur pour le slogan/valeurs */
+    line-height: 1.6; /* AUGMENTÉ : Plus d'espace entre les lignes du paragraphe */
+    margin-bottom: 45px; /* AUGMENTÉ : Plus d'espace après le paragraphe avant les boutons */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); /* Ombre pour meilleure lisibilité */
+}
+
+/* Styles pour les boutons dans la section Hero */
+.hero .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 0 10px; /* Espace entre les boutons */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #b22222; /* Ton rouge principal */
+    color: white;
+    white-space: nowrap; /* Empêche le texte du bouton de se couper */
+}
+
+.hero .btn:hover {
+    transform: scale(1.05);
+    background-color: #ff4500; /* Rouge plus vif au survol */
+}
+
+/* Si tu as un deuxième bouton, style secondaire */
+.hero .secondary-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.hero .secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffcc00;
+    color: #ffcc00;
+}
+
+/* ===================================== */
+/* 4. Page Banner (avec image en arrière-plan) - À VÉRIFIER SI UTILISÉ AILLEURS */
+/* ===================================== */
+/* Attention : cette classe .page-banner utilise actuellement la même image que .hero.
+   Si vous voulez une image différente ou une mise en page différente pour d'autres pages,
+   assurez-vous de changer le background-image et d'adapter les styles si nécessaire. */
+.page-banner {
+    width: 100%;
+    min-height: 600px; /* Définit une hauteur minimale pour voir l'image */
+    height: auto;
+    margin-top: 60px; /* Peut-être ajuster si header est plus grand ou plus petit */
+    /* DÉFINISSEZ LE CHEMIN DE VOTRE IMAGE ICI (si différente de .hero) */
+    background-image: url('images/fond.jpg'); /* Exemple: change l'image ici si c'est pour une autre bannière */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 15px;
+}
+
+.page-banner .banner-image {
+    display: none; /* Cache toute balise <img> avec cette classe */
+}
+
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay semi-transparent noir */
+    z-index: 0;
+}
+
+.page-banner > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Styles pour le texte de la page-banner si elle est utilisée */
+/* Si vous utilisez la classe .page-banner pour d'autres pages avec des titres/paragraphes,
+   ajustez leurs marges et hauteurs de ligne ici aussi. */
+.page-banner h1 {
+    font-size: 3rem;
+    margin-bottom: 25px; /* Exemple, ajustez selon le besoin */
+    line-height: 1.3;
+}
+.page-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Exemple, ajustez selon le besoin */
+    line-height: 1.6;
+}
+
+/* ===================================== */
+/* 5. Buttons & Forms    */
+/* ===================================== */
+.btn {
+  /* C'est ici que vous modifiez la couleur de fond et la couleur du texte */
+  background-color: none; /* <<--- Modifiez cette couleur pour le fond */
+  color: black;               /* <<--- Modifiez cette couleur pour le texte */
+  /* ... autres propriétés ... */
+}
+
+.btn:hover {
+  /* C'est ici que vous modifiez la couleur de fond au survol */
+  background-color: none; /* <<--- Modifiez cette couleur pour le survol */
+}
+
+
+
+
+/* ===================================== */
+/* 5. Content General        */
+/* ===================================== */
+.content {
+    padding-top: 0px; /* Le .hero ou .page-banner gère déjà son décalage par rapport au header */
+    /* ... tes autres styles pour .content ... */
+}
+
+
+/* ===================================== */
+/* 6. Le Club Page (le-club.html) */
+/* ===================================== */
+
+/* 6.1. General Section Styles */
+.club-presentation,
+.club-details,
+.club-values,
+.club-trainers,
+.club-schedule,
+
+/* Styles pour la section des horaires sur la page Le Club */
+.club-schedule p {
+    /* Ceci peut servir pour tous les paragraphes dans club-schedule, ajustez si besoin */
+    margin-bottom: 20px; /* Ajoute un espace sous le paragraphe introductif */
+}
+/* Espacement avant le bloc du tableau de self-défense */
+.self-defense-table-container {
+    margin-top: 35px; /* Ajoute un espace plus grand avant le titre "Cours de Self-Défense" */
+    margin-bottom: 30px; /* Espace après le tableau et avant le lien de téléchargement global */
+}
+
+/* Espacement entre le tableau de self-défense et la note de téléchargement */
+.self-defense-table-container .table-note {
+    margin-top: 30px; /* Ajoute un espace au-dessus du paragraphe de la note "Pour l'ensemble..." */
+    margin-bottom: 0; /* Assure qu'il n'y a pas de double marge avec le container */
+}
+
+/* Styles pour le tableau de self-défense lui-même */
+.self-defense-table-container table {
+    width: 100%; /* Le tableau prend toute la largeur disponible */
+    border-collapse: collapse; /* Pour des bordures propres */
+    margin-top: 20px; /* Espace entre le titre H3 et le tableau */
+    margin-bottom: 0; /* La marge sera gérée par .table-note ou le conteneur */
+}
+
+.self-defense-table-container th,
+.self-defense-table-container td {
+    border: 1px solid #ddd; /* Bordures légères pour le tableau */
+    padding: 10px; /* Espacement interne des cellules */
+    text-align: left; /* Alignement du texte à gauche */
+}
+
+.self-defense-table-container th {
+    background-color: #f2f2f2; /* Fond pour les en-têtes de colonne */
+    font-weight: bold;
+}
+
+/* Styles pour la section de téléchargement des horaires */
+.schedule-download {
+    text-align: center  ; /* Centre le bouton horizontalement */
+    margin-top: 30px;   /* Ajoute un peu d'espace au-dessus du bouton */
+    margin-bottom: 30px; /* Ajoute un peu d'espace en dessous du bouton */
+}
+.club-location {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: justify;
+}
+
+.club-presentation {
+    background-color: white;
+    border-left: 0px solid #0056b3;
+}
+
+/* 6.2. Section Titles */
+.club-presentation h1,
+.club-details h2,
+.club-values h2,
+.club-trainers h2,
+.club-schedule h2,
+.club-location h2 {
+    text-align: center;
+    font-size: 2.8em;
+    color: #0056b3;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* 6.3. Subtitles */
+.club-presentation h3,
+.details-section h3 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 5px;
+}
+
+/* 6.4. Paragraphs and Lists */
+.club-presentation p,
+.details-section p,
+.club-values ul,
+.club-details ul {
+    line-height: 1.8; /* Espacement des lignes pour une meilleure lisibilité */
+    color: #444;
+}
+
+.club-values ul,
+.club-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.club-values ul li,
+.club-details ul li {
+    /* background: url('images/check-icon.png') no-repeat left center; */ /* Uncomment if you have the icon */
+    background-size: 20px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.club-values ul li::before,
+.club-details ul li::before {
+    content: "• "; /* Ou un autre caractère comme "✔ " si l'icône n'est pas là */
+    color: #28a745;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+/* 6.5. Trainers Section */
+.trainer-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.trainer-card {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.trainer-card:hover {
+    transform: translateY(-5px);
+}
+
+.trainer-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #007bff;
+}
+
+.trainer-card h3 {
+    font-size: 1.5em;
+    color: #0056b3;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.trainer-card p {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 6.6. Schedule Table */
+.club-schedule table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.club-schedule th,
+.club-schedule td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.club-schedule th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.club-schedule tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.club-schedule tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* 6.7. Location Section */
+.club-location address {
+    font-style: normal;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.club-location p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.club-location p a:hover {
+    text-decoration: underline;
+}
+
+/* ===================================== */
+/* 7. Contact Section        */
+/* ===================================== */
+.contact-section {
+  background-color: #ffffff;
+  padding: 80px 5%;
+  width: 100%;
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 32px;
+  color: #222;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  text-align: center;
+}
+
+.contact-column {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.contact-column h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.contact-column p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.contact-column a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-column a:hover {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+/* ===================================== */
+/* 8. Contact Form           */
+/* ===================================== */
+.contact-form-container {
+    background: #444;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 60px auto 40px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form-container h3 {
+    color: #ffcc00;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.form-group .required {
+    color: #ffcc00;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #ffcc00;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.radio-group p {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.btn.send-btn {
+    align-self: center;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn.send-btn:hover {
+    background: #0056b3;
+}
+
+.anti-spam label {
+    font-style: italic;
+    font-size: 0.95rem;
+}
+.anti-spam input {
+    max-width: 150px;
+}
+
+
+/* ===================================== */
+/* 9. Partners Section       */
+/* ===================================== */
+.partenaires {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.partenaires h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.partenaires-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.partenaires-logos img {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.partenaires-logos img:hover {
+    transform: scale(1.1);
+}
+
+/* ===================================== */
+/* 10. Registration Section  */
+/* ===================================== */
+.inscription-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.inscription-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.intro-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.documents-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: #222;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.btn-download:hover {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+.email-text {
+    font-size: 18px;
+    color: #333;
+}
+
+.email-text a {
+    color: #222;
+    text-decoration: underline;
+}
+
+
+/* ===================================== */
+/* 11. Footer                */
+/* ===================================== */
+footer {
+    background: #222;
+    color: #eee;
+    padding: 40px 20px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px;
+    text-align: left;
+}
+
+.footer-column h3 {
+    color: #ffcc00;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    margin-top: 20px;
+    color: #aaa;
+}
+
+/* ===================================== */
+/* 12. Global Responsive Rules */
+/* ===================================== */
+
+/* Responsive Hero Section */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 350px;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 25px; /* Ajuste pour mobile */
+    }
+    .hero p {
+        font-size: 1.2rem;
+        line-height: 1.5; /* Ajuste pour mobile */
+        margin-bottom: 30px; /* Ajuste pour mobile */
+    }
+    .hero .btn {
+        display: block;
+        width: 80%;
+        margin: 15px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+
+/* Responsive Club */
+@media (max-width: 768px) {
+    .club-section .club-container {
+        flex-direction: column;
+    }
+    .club-section .club-image,
+    .club-section .club-text {
+        width: 100%;
+    }
+
+    .club-presentation h1,
+    .club-details h2,
+    .club-values h2,
+    .club-trainers h2,
+    .club-schedule h2,
+    .club-location h2 {
+        font-size: 2em;
+    }
+
+    .club-presentation h3,
+    .details-section h3 {
+        font-size: 1.5em;
+    }
+
+    .trainer-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trainer-card {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-presentation,
+    .club-details,
+    .club-values,
+    .club-trainers,
+    .club-schedule,
+    .club-location {
+        padding: 20px 15px;
+    }
+
+    .club-schedule th,
+    .club-schedule td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    /* Contact form responsive */
+    .contact-form-container {
+        padding: 20px;
+        margin: 40px 10px;
+    }
+
+    /* Footer responsive */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-column {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASSOA Karaté - Contact</title>
+    <link rel="stylesheet" href="projet.css" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">ASSOA Karaté</div>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="le-club.html">Le Club</a>
+            <a href="inscription.html">Inscription</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+
+    <section class="page-banner">
+    <h1>Contactez l'ASSOA Karaté</h1>
+    <p>Nous sommes là pour répondre à toutes vos questions et vous accompagner</p>
+    </section>
+
+    <div class="content">
+        <section id="contact" class="contact-section">
+            <div class="contact-header">
+                <h2>Contacter l'ASSOA Karaté</h2>
+                <p>Ce formulaire vous permet de contacter directement l'association. N'hésitez pas à nous envoyer un e-mail pour tout type de questions.</p>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>Envoyez-nous un message</h3>
+                <p class="intro-text">
+                    Utilisez le formulaire ci-dessous pour nous contacter directement. Nous vous répondrons dans les plus brefs délais.
+                </p>
+
+                <form action="traitement-formulaire.php" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Votre nom <span class="required">*</span></label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Votre e-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sujet">Sujet de votre message <span class="required">*</span></label>
+                        <input type="text" id="sujet" name="sujet" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="8"></textarea>
+                    </div>
+
+                    <div class="form-group radio-group">
+                        <p>Êtes-vous adhérent ? <span class="required">*</span></p>
+                        <input type="radio" id="adherent_oui" name="adherent" value="Oui" required>
+                        <label for="adherent_oui">Oui</label>
+                        <input type="radio" id="adherent_non" name="adherent" value="Non">
+                        <label for="adherent_non">Non</label>
+                    </div>
+
+                    <div class="form-group" style="display:none; visibility:hidden; height:0; overflow:hidden;">
+                        <label for="honeypot">Laissez ce champ vide</label>
+                        <input type="text" id="honeypot" name="honeypot" tabindex="-1"> </div>
+
+                    <div class="form-group anti-spam">
+                        <label for="anti-spam-question">Question anti-spam : Quel est le résultat de 3 + 5 ? <span class="required">*</span></label>
+                        <input type="text" id="anti-spam-question" name="anti_spam_answer" required>
+                    </div>
+
+                    <button type="submit" class="btn send-btn">Envoyer le message</button>
+                </form>
+            </div>
+            </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <p><a href="#" target="_blank">Facebook</a></p>
+                <p><a href="#" target="_blank">Instagram</a></p>
+                <p><a href="#" target="_blank">YouTube</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
+            const error = urlParams.get('error');
+            const messageContainer = document.createElement('div');
+            messageContainer.style.marginTop = '20px';
+            messageContainer.style.padding = '15px';
+            messageContainer.style.borderRadius = '5px';
+            messageContainer.style.textAlign = 'center';
+            messageContainer.style.maxWidth = '600px';
+            messageContainer.style.margin = '20px auto';
+            messageContainer.style.fontWeight = 'bold';
+            messageContainer.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+            messageContainer.style.transition = 'opacity 0.5s ease-in-out';
+            messageContainer.style.opacity = '0';
+
+            if (success) {
+                messageContainer.textContent = "Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.";
+                messageContainer.style.backgroundColor = '#d4edda';
+                messageContainer.style.color = '#155724';
+                messageContainer.style.border = '1px solid #c3e6cb';
+            } else if (error) {
+                let errorMessage = "Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.";
+                if (error === 'mail_failed') {
+                    errorMessage = "Désolé, nous n'avons pas pu envoyer votre message pour le moment. Veuillez réessayer plus tard ou nous contacter par téléphone.";
+                } else if (error === 'validation_failed') {
+                     errorMessage = "Certains champs du formulaire étaient incorrects. Veuillez vérifier vos informations.";
+                }
+                messageContainer.textContent = errorMessage;
+                messageContainer.style.backgroundColor = '#f8d7da';
+                messageContainer.style.color = '#721c24';
+                messageContainer.style.border = '1px solid #f5c6cb';
+            }
+
+            if (success || error) {
+                const formContainer = document.querySelector('.contact-form-container');
+                if (formContainer) {
+                    formContainer.parentNode.insertBefore(messageContainer, formContainer);
+                    setTimeout(() => messageContainer.style.opacity = '1', 50);
+                } else {
+                    document.querySelector('.content').appendChild(messageContainer);
+                    setTimeout(() => messageContainer.style.opacity = '1', 50);
+                }
+                setTimeout(() => {
+                    history.replaceState({}, document.title, window.location.pathname);
+                }, 1000);
+            }
+        });
+    </script>
+
+</body>
+</html>
