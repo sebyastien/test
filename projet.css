@@ -747,6 +747,7 @@ footer {
     font-size: 1.15rem; /* Grossit le texte */
 }
 
+
 .footer-column h3 {
     color: #ffcc00;
     font-size: 2rem;   /* Titre plus gros */
@@ -920,3 +921,5 @@ footer {
         margin-right: auto;
     }
 }
+
+
