@@ -747,6 +747,37 @@ footer {
     font-size: 1.15rem; /* Grossit le texte */
 }
 
+.footer-column .social-icons {
+    display: flex; /* Utilise Flexbox pour aligner les icônes */
+    justify-content: center; /* Centre les icônes horizontalement */
+    gap: 15px; /* Espace entre les icônes */
+    margin-top: 15px; /* Espace au-dessus des icônes */
+}
+
+.footer-column .social-icons img {
+    width: 60px; /* Taille fixe pour les icônes */
+    height: 60px; /* Assure que l'image reste carrée */
+    object-fit: contain; /* S'assure que l'image ne soit pas coupée */
+    transition: transform 0.3s ease;
+}
+
+/* Règle spécifique pour agrandir uniquement le logo Instagram */
+.footer-column .social-icons img[alt="Instagram"] {
+    width: 110px; /* Taille agrandie pour Instagram */
+    height: 60px;
+}
+
+.footer-column .social-icons img:hover {
+    transform: scale(1.1); /* Effet de zoom au survol */
+}
+
+/* Ajustements responsives pour le footer si nécessaire, pour éviter le débordement des icônes sur des petits écrans */
+@media (max-width: 800px) {
+    .footer-column .social-icons {
+        flex-wrap: wrap; /* Permet aux icônes de passer à la ligne */
+    }
+}
+
 
 .footer-column h3 {
     color: #ffcc00;

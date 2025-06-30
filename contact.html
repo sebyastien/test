@@ -36,14 +36,68 @@
                     Utilisez le formulaire ci-dessous pour nous contacter directement. Nous vous répondrons dans les plus brefs délais.
                 </p>
 
-                <div class="form">
-  <h1>Contact Us</h1>
-  <form action="https://formsubmit.co/36837ba7d2573b9f2b3933274890e48b" method="POST">
-    <input type="text" name="Nom et Prénom" required placeholder="Nom et Prénom">
-    <input type="email" name="Votre Email" required placeholder="Email">
-    <input type="text" name="Sujet de votre message" required placeholder="Subject">
-    <textarea name="Message" required placeholder="Message"></textarea>
-    <input type="hidden" name="_template" value="box">
-    <button type="submit">Submit</button>
-  </form>
+<div class="form">
+    <form action="https://formsubmit.co/36837ba7d2573b9f2b3933274890e48b" method="POST">
+        <div class="form-group">
+            <label for="name">Nom et Prénom <span class="required">*</span></label>
+            <input type="text" id="name" name="Nom et Prénom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Votre Email <span class="required">*</span></label>
+            <input type="email" id="email" name="Votre Email" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Sujet de votre message <span class="required">*</span></label>
+            <input type="text" id="subject" name="Sujet de votre message" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea id="message" name="Message" required></textarea>
+        </div>
+
+        <div class="form-group radio-group">
+            <label>Êtes-vous déjà adhérent(e) ? <span class="required">*</span></label>
+            <div class="radio-options">
+                <input type="radio" id="adherent_yes" name="Adherent" value="Oui" required>
+                <label for="adherent_yes">Oui</label>
+                <input type="radio" id="adherent_no" name="Adherent" value="Non">
+                <label for="adherent_no">Non</label>
+            </div>
+        </div>
+
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://sebyastien.github.io/test/index.html"> <button type="submit" class="btn send-btn">Envoyer</button>
+    </form>
 </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
