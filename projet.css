@@ -15,6 +15,41 @@ body {
   color: #333; /* Ajouté pour un texte par défaut */
 }
 
+/* Bouton Hamburger */
+.hamburger-menu {
+    display: none; /* Caché par défaut sur les grands écrans */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Au-dessus de tout */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation pour le bouton croix (optionnel) */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+
 /* ===================================== */
 /* 2. Header & Navigation    */
 /* ===================================== */
@@ -56,21 +91,47 @@ nav a:hover {
   color: #ffcc00;
 }
 
-/* Responsive menu */
 @media (max-width: 600px) {
   header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Garde le logo et le bouton sur la même ligne */
+    justify-content: space-between; /* Espace le logo et le bouton */
+    align-items: center; /* Centre verticalement */
   }
 
-  nav {
+  .hamburger-menu {
+    display: block; /* Affiche le bouton hamburger sur mobile */
+  }
+
+  nav.nav-links { /* Utilise la nouvelle classe pour cibler la nav */
+    display: none; /* Cache la navigation par défaut sur mobile */
     flex-direction: column;
     width: 100%;
-    padding-top: 10px;
+    position: fixed; /* Reste fixe par rapport au viewport */
+    top: 75px; /* Démarre juste en dessous du header (ajuste 75px si la hauteur de ton header change) */
+    left: 0;
+    background-color: #333; /* Couleur de fond pour le menu déplié */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    padding: 20px 0;
+    text-align: center;
+    height: calc(100vh - 75px); /* Donne au menu la hauteur restante de l'écran */
+    overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
+    -webkit-overflow-scrolling: touch;
+    z-index: 999; /* S'assure que le menu est au-dessus du contenu principal */
   }
 
-  nav a {
-    margin: 5px 0;
+
+  nav.nav-links.active { /* Classe JavaScript pour afficher le menu */
+    display: flex; /* Affiche la navigation quand la classe 'active' est présente */
+  }
+
+  nav.nav-links a {
+    margin: 10px 0; /* Plus d'espace vertical pour les liens */
+    padding: 10px 0;
+    border-bottom: 1px solid #444; /* Optionnel: séparation entre les liens */
+  }
+
+  nav.nav-links a:last-child {
+    border-bottom: none; /* Pas de bordure pour le dernier lien */
   }
 }
 
