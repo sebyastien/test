@@ -8,28 +8,38 @@
 </head>
 <body>
 
-   <header>
-    <div class="logo">ASSOA Karaté</div>
-    <button class="hamburger-menu" aria-label="Menu de navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
-    <nav class="nav-links"> <a href="index.html">Accueil</a>
-        <a href="le-club.html">Le Club</a>
-        <a href="inscription.html">Inscription</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
+<header>
+        <div class="logo img"><a href="index.html" target="_blank">
+                    <img src="images/logo 1.png" alt="Fédération Française de Karaté">
+                </a></div>
+        <button class="hamburger-menu" aria-label="Menu de navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+         
+        <nav class="nav-links"> <a href="index.html">Accueil</a>
+            <div class="dropdown">
+                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <div class="dropdown-content">
+                    <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
+                    <a href="vaureal.html">Vauréal</a>
+                    <a href="pontoise.html">Pontoise</a>
+                </div>
+            </div>
+            <a href="evenements.html">Evènements</a>
+            <a href="inscription.html">Inscription</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
 
     <section class="page-banner">
     <h1>Rejoignez l'ASSOA Karaté</h1>
     <p>Découvrez les étapes simples pour vous inscrire et débuter votre parcours martial</p>
     </section>
-    
-    <div class="content">
 
+    <main class="main-content">
         <section id="inscription" class="inscription-section">
             <h2>Inscription au Club</h2>
 
@@ -43,11 +53,11 @@
                     📄 Formulaire d'inscription (Obligatoire)
                 </a>
 
-                <a href="fichiers/questionnaire-medical-mineurs.pdf" class="btn-download" target="_blank">
+                <a href="documents/questionnaire médical.pdf" class="btn-download" target="_blank">
                     🩺 Questionnaire médical (Mineurs uniquement)
                 </a>
 
-                <a href="fichiers/attestation-remise-club.pdf" class="btn-download" target="_blank">
+                <a href="documents/attestation.pdf" class="btn-download" target="_blank">
                     📝 Attestation à remettre au club
                 </a>
             </div>
@@ -57,25 +67,25 @@
             </p>
 
             <h3>Comment nous faire parvenir vos documents :</h3>
-            <p class="email-text">
-                Une fois les documents dûment remplis, vous avez deux options :
+            <p class="email-text"><p></p>
+                Une fois les documents dûment remplis, vous avez deux options :<p></p><br>
+                <p>
+               <strong>1. Les envoyer par e-mail à l'adresse suivante :</strong><p>
                 <br>
-                1. Les envoyer par e-mail à l'adresse suivante :
+                <strong><a href="mailto:karate.asso@example.com">karate.asso@example.com</a></strong><p></p>
                 <br>
-                <strong><a href="mailto:karate.asso@example.com">karate.asso@example.com</a></strong>
-                <br>
-                2. Les remettre en main propre à l'un de nos responsables ou entraîneurs directement au dojo pendant les heures de cours.
-                <br><br>
+                <strong>2. Les remettre en main propre à l'un de nos responsables ou entraîneurs directement au dojo pendant les heures de cours.
+                </strong><br><p></p><br>
                 Nous vous contacterons rapidement après réception pour confirmer votre inscription.
-            </p>
+            </p><p></p>
+
             <h3>Tarifs et Horaires :</h3>
             <p class="intro-text">
-                Pour connaître les tarifs de la saison en cours et les horaires des différents cours (enfants, adolescents, adultes, tous niveaux), veuillez nous contacter directement ou consulter notre planning affiché au dojo.
+                Pour connaître les tarifs de la saison en cours et les horaires des différents cours (enfants, adolescents, adultes, tous niveaux),
+                veuillez nous contacter directement ou consulter notre planning affiché au dojo.
             </p>
         </section>
-
-    </div>
-
+    </main>
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -102,11 +112,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 ASSOA Karaté. Tous droits réservés.</p>
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
         </div>
     </footer>
 
 <script src="script.js"></script>
 
-    </body>
+</body>
 </html>
