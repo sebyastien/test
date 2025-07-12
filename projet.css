@@ -22,6 +22,10 @@ body {
   color: #333;
 }
 
+a {
+    color: blue; /* Rend le texte du lien bleu */
+}
+
 .main-content {
   flex-grow: 1; /* C'est ce qui fait que votre contenu central s'étend pour combler l'espace */
 }
@@ -1300,7 +1304,9 @@ footer {
 /* Conteneur principal des cartes d'événements */
 .events-list {
   display: flex;
-  flex-direction: column; /* Chaque événement sur sa propre ligne */
+  flex-direction: row; /* Chaque événement sur sa propre ligne */
+  flex-wrap: wrap;
+   justify-content: center; /* Centre les cartes horizontalement si elles ne remplissent pas toute la ligne */
   align-items: center; /* Centre chaque carte individuellement */
   gap: 30px; /* Espacement vertical entre chaque carte */
   margin-top: 30px;
