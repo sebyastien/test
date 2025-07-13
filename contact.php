@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASSOA Karaté - Contact</title>
+    <link rel="stylesheet" href="projet.css" />
+</head>
+<body>
+
+<header>
+        <div class="logo img"><a href="index.html">
+                    <img src="images/lg.png" alt="Fédération Française de Karaté">
+                </a></div>
+        <button class="hamburger-menu" aria-label="Menu de navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+         
+        <nav class="nav-links"> <a href="index.html">Accueil</a>
+            <div class="dropdown">
+                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <div class="dropdown-content">
+                    <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
+                    <a href="vaureal.html">Vauréal</a>
+                    <a href="pontoise.html">Pontoise</a>
+                </div>
+            </div>
+            <a href="evenements.html">Evènements</a>
+            <a href="inscription.html">Inscription</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-banner">
+            <h1>Contactez l'ASSOA Karaté</h1>
+            <p>Nous sommes là pour répondre à toutes vos questions et vous accompagner</p>
+        </section>
+
+    <main class="main-content">
+        <section id="contact" class="contact-section">
+            <div class="contact-header">
+                <h2>Contacter l'ASSOA Karaté</h2>
+                <p>Ce formulaire vous permet de contacter directement l'association. N'hésitez pas à nous envoyer un e-mail pour tout type de questions.</p>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>Envoyez-nous un message</h3>
+                <p class="intro-text">
+                    Utilisez le formulaire ci-dessous pour nous contacter directement. Nous vous répondrons dans les plus brefs délais.
+                </p>
+
+                <div class="form">
+                    <form action="https://formsubmit.co/36837ba7d2573b9f2b3933274890e48b" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nom et Prénom <span class="required">*</span></label>
+                            <input type="text" id="name" name="Nom et Prénom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Votre Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="Votre Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet de votre message <span class="required">*</span></label>
+                            <input type="text" id="subject" name="Sujet de votre message" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="Message" required></textarea>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <label>Êtes-vous déjà adhérent(e) ? <span class="required">*</span></label>
+                            <div class="radio-options">
+                                <input type="radio" id="adherent_yes" name="Adherent" value="Oui" required>
+                                <label for="adherent_yes">Oui</label>
+                                <input type="radio" id="adherent_no" name="Adherent" value="Non">
+                                <label for="adherent_no">Non</label>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="_template" value="box">
+                        <input type="hidden" name="_next" value="https://sebyastien.github.io/test/index.html">
+                        <button type="submit" class="btn send-btn">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main> <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons"> <a href="https://votre-lien-facebook-ici.com" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://votre-lien-instagram-ici.com" target="_blank">
+                    <img src="images/Instagram.png" alt="Instagram">
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASSOA Karaté - Evènements</title>
+    <link rel="stylesheet" href="projet.css">
+</head>
+<body>
+
+<header>
+        <div class="logo img"><a href="index.html">
+                    <img src="images/lg.png" alt="Fédération Française de Karaté">
+                </a></div>
+        <button class="hamburger-menu" aria-label="Menu de navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+         
+        <nav class="nav-links"> <a href="index.html">Accueil</a>
+            <div class="dropdown">
+                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <div class="dropdown-content">
+                    <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
+                    <a href="vaureal.html">Vauréal</a>
+                    <a href="pontoise.html">Pontoise</a>
+                </div>
+            </div>
+            <a href="evenements.html">Evènements</a>
+            <a href="inscription.html">Inscription</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+        <main class="main-content">
+        <section class="page-banner2">
+            <video autoplay muted loop playsinline class="background-video">
+        <source src="video/jup.mp4" type="video/mp4">
+    </video>
+            <h1>Retrouvez l'ASSOA Karaté</h1>
+        </section></section>
+
+    <main class="container">
+    <section class="events-list">
+        <h3>Prochains Événements</h3>
+        <div class="event-card">
+            <img src="images/karaté fond.png" alt="Stage avec les experts japonais et Jean Pierre Lavorato">
+            <div class="event-content">
+                <h4>Stage avec les experts japonais et Jean Pierre Lavorato</h4>
+                <p class="event-date">Date: 18 et 19 octobre 2025</p>
+                <p class="event-location">Lieu : Gymnase Philippe Hémet, Pontoise</p>
+                <p>Participez à un stage exceptionnel avec des experts japonais renommés et le grand maître Jean Pierre Lavorato. Une opportunité unique de perfectionner vos techniques et d'approfondir votre pratique.</p>
+                <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="images/passage de grade.jpg" alt="Passage de grade 1er dan">
+            <div class="event-content">
+                <h4>Passage de grade 1er dan</h4>
+                <p class="event-date">Date: 28 juin 2025</p>
+                <p class="event-location">Lieu : Gymnase de la Bussie, Vaureéal</p>
+                <p>Les 10 élèves présent ce samedi ont réussi avec brio leur passage de grade 1er dan passé au club. Nous remercions les différents jurys présents ainsi que le professeur du club !! Félicitations encore à tous les karatékas présents !</p>
+                <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://via.placeholder.com/400x250?text=Stage+Experts+Japonais" alt="Compétitions inter-club">
+            <div class="event-content">
+                <h4>Compétition Inter-Clubs</h4>
+                <p class="event-date">Date: 22 novembre 2025 à 09h00</p>
+                <p class="event-location">Lieu : Gymnase Roger Couderc, Saint-Ouen-l'Aumône</p>
+                <p>Venez encourager nos jeunes talents lors de la compétition inter-clubs. Un événement convivial pour tester les acquis et partager un bon moment autour du karaté.</p>
+                <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="images/jup_franc_2025.jpg" alt="Championnat de France vétéran">
+            <div class="event-content">
+                <h4>Championnat de France vétéran 2025 : Une Victoire Éclatante !</h4>
+                <p class="event-date">Date: de 7 au 9 juin 2025</p>
+                <p class="event-location">Lieu : Tournefeuille, en Haute-Garonne</p>
+                <p>Nous sommes très fiers d'annoncer les excellents résultats de notre club lors du récent Championnat de France Vétéran 2025.</p>
+    <p>Un grand bravo et toutes nos félicitations à notre athlète, <strong>Jupiter Estime</strong>, qui a brillamment représenté notre dojo et a décroché la <strong>1ère place</strong> de sa catégorie !</p>
+    <p>Cette performance exceptionnelle est le fruit d'un travail acharné, d'une détermination sans faille et d'un talent incontestable. Nous sommes très fiers de compter un champion de France parmi nous !</p>
+    <p>Félicitations encore une fois à Jupiter Estime pour cette magnifique victoire !</p>
+        <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="images/equipe_europe.jpg" alt="Championnat d'Europe Wado">
+            <div class="event-content">
+                <h4>Championnat d'Europe Wado</h4>
+                <p class="event-date">Date: du 1er au 3 novembre 2024</p>
+                <p class="event-location">Lieu : Édimbourg, en Écosse</p>
+                <p><p>Nous tenons à féliciter chaleureusement tous les athlètes engagés lors du récent Championnat d'Europe Wado pour leur dévouement et leurs performances exceptionnelles.</p>
+    <p>Nous sommes particulièrement fiers de mettre en lumière nos trois athlètes qui se sont distingués :</p>
+    
+        <p>
+            <strong> • Thomas Nguyen :</strong> Il termine à une remarquable <strong>5ème place</strong> dans la catégorie Kata.
+                </p>
+        <p>
+            <strong> • Freddy NARANIN :</strong> Il monte sur le podium en décrochant une brillante <strong>3ème place</strong>.
+                </p>
+        <p>
+            <strong> • Jupiter Estime :</strong> Il est sacré <strong>Champion d'Europe</strong> en terminant à la <strong>1ère place</strong> de sa catégorie !
+                </p>
+    <p>Encore toutes nos félicitations à nos athlètes pour ces résultats magnifiques qui font honneur à notre club !</p></p>
+                <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        </section>
+</main>
+
+</main> <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons"> <a href="https://votre-lien-facebook-ici.com" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://votre-lien-instagram-ici.com" target="_blank">
+                    <img src="images/Instagram.png" alt="Instagram">
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

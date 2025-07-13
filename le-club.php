@@ -34,14 +34,14 @@
     </header>
 
     <section class="page-banner1">
-    <h1>Bienvenue au Budo Karaté club Pontoise</h1>
+    <h1>Bienvenue au Club ASSOA Karaté</h1>
     <p>Découvrez notre histoire, nos valeurs et nos entraîneurs passionnés.</p>
     </section>
 
     <div class="content">
 
         <section class="club-presentation">
-            <h1>Le Budo Karaté club Pontoise</h1>
+            <h1>Notre Club et notre École de Karaté</h1>
             <p>
                 L’ASSOA Karaté est une association sportive déclarée fondée le 11 juin 1993 à Saint‑Ouen‑l’Aumône (Val‑d’Oise). Elle s’inscrit dans l’ASSOA, un club omnisports de la ville couvrant 13 disciplines (athlétisme, basket, judo, karaté, tennis, etc.), avec plus de 2 200 adhérents.
             </p>
@@ -51,6 +51,34 @@
             <p>
                 Le dojo d'ASSOA Karaté est également reconnu pour la présence de plusieurs hauts gradés. Leur présence est un gage de la qualité et du sérieux de notre approche pédagogique. Ils sont des modèles pour nos élèves et contribuent activement à l'excellence de notre enseignement, offrant un accompagnement personnalisé pour chaque parcours.
             </p>
+        </section>
+
+        <section class="club-details">
+            <h2>Détails du Club</h2>
+
+            <div class="details-section">
+                <h3>Disciplines Pratiquées</h3>
+                <p>Le club propose des cours de karaté pour différents âges et niveaux, ainsi que d'autres disciplines complémentaires :</p>
+                <ul>
+                    <li>Karaté (dès 4 ans, adolescents et adultes, loisir et compétition nationale)</li>
+                    <li>Krav Maga</li>
+                    <li>Self-défense</li>
+                    <li>Karaté Training (dès 12 ans et adultes)</li>
+                    <li>Karaté Fitness et Cardio (dès 14 ans et adultes)</li>
+                </ul>
+                <a href="le-club.html#horaires" class="btn">Concernant les horaires, vous trouverez tout ci-dessous</a>
+            </div>
+        </section>
+
+        <section class="club-values">
+            <h2>Nos Valeurs Fondamentales</h2>
+            <ul>
+                <li><strong>Discipline :</strong> L'engagement et la rigueur dans la pratique.</li>
+                <li><strong>Respect :</strong> Envers soi-même, les autres pratiquants et les règles du dojo.</li>
+                <li><strong>Maîtrise de soi :</strong> Le contrôle de ses émotions et de ses actions.</li>
+                <li><strong>Persévérance :</strong> La capacité à surmonter les défis et à progresser.</li>
+                <li><strong>Humilité :</strong> La reconnaissance de ses propres limites et la volonté d'apprendre.</li>
+            </ul>
         </section>
 
         <section class="club-trainers">
@@ -121,7 +149,12 @@
            
             <div class="schedule-download">
 
-                
+                <a href="documents/Affiche karate SOA.pdf" class="btn-download" target="_blank">
+                    📄 Horaires des cours de karaté à Saint Ouen l'Aumone
+                </a>
+                <a href="documents/affiche karaté vauréal.pdf" class="btn-download" target="_blank">
+                    📄 Horaires des cours de karaté à Vauréal
+                </a>
                 <a href="documents/Affiche karaté pontoise.pdf" class="btn-download" target="_blank">
                     📄 Horaires des cours de karaté à Pontoise
                 </a>
@@ -130,6 +163,39 @@
 
         <section class="club-location">
             <h2>Emplacements de nos Dojos</h2>
+            <p>Nos principaux lieux d'entraînement se situent à Saint-Ouen l'Aumône, Vauréal et Pontoise :</p>
+            <address>
+                <strong>Gymnase Roger Couderc (Saint-Ouen l'Aumône) :</strong><br>
+                33 Rue du Mail<br>
+                95310 Saint-Ouen-l’Aumône<br>
+                <a href="https://maps.google.com/?cid=2373756908601981563" target="_blank">Voir sur Google Maps</a>
+            </address>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2410.6767020761395!2d2.107872!3d49.0491671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f56309d7b4fb%3A0x20f14754e859ba7b!2sStade%20Roger%20Couderc!5e1!3m2!1sfr!2sfr!4v1750544230246!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+             <address>
+                <strong>Gymnase Marcel Pagnol (Saint-Ouen l'Aumône) :</strong><br>
+                Rue Léo Lagrange<br>
+                95310 Saint-Ouen-l’Aumône<br>
+                <a href="https://maps.google.com/?cid=11009830002770898584" target="_blank">Voir sur Google Maps</a>
+            </address>
+            <div class="map-container"> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2411.464231872148!2d2.1143245!3d49.032922299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e65ff771aff873%3A0x98cac60e1098ee98!2sCOSEC%20Pagnol!5e1!3m2!1sfr!2sfr!4v1750544391783!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <address>
+                <strong>Gymnase de la Bussie (Vauréal) :</strong><br>
+                Rue de la Gerbe d'Or<br>
+                95490 Vauréal<br>
+                <a href="https://maps.google.com/?cid=10669209968220745130" target="_blank">Voir sur Google Maps</a>
+            </address>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2411.537357282524!2d2.0199642!3d49.031413699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f357acd3203b%3A0x9410a5f02ddaadaa!2sGymnase%20La%20Bussie!5e1!3m2!1sfr!2sfr!4v1750544453963!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <address>
+                <strong>Gymnase des Toupets (Vauréal) :</strong><br>
+                Avenue Louise Michel<br>
+                95490 Vauréal<br>
+                <a href="https://maps.app.goo.gl/c1Jv45UU5dpq2nLP8" target="_blank">Voir sur Google Maps</a>
+            </address>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.018909245142!2d2.0297704!3d49.0217107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e68b52e50d1563%3A0x92d2c09bf96388a7!2sGymnase%20des%20Toupets!5e1!3m2!1sfr!2sfr!4v1750544697978!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> <address>
             <strong>Gymnase Nelson Mandela (Pontoise) :</strong><br>
                 Boulevard de l'Europe<br>
                 95300 Pontoise<br>

@@ -178,13 +178,13 @@ nav a:hover {
     flex-direction: column;
     width: 100%;
     position: fixed; /* Reste fixe par rapport au viewport */
-    top: 75px; /* Démarre juste en dessous du header (ajuste 75px si la hauteur de ton header change) */
+    top: 65px; /* Démarre juste en dessous du header (ajuste 75px si la hauteur de ton header change) */
     left: 0;
     background-color: #222; /* Couleur de fond pour le menu déplié */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     padding: 20px 0;
     text-align: center;
-    height: calc(100vh - 75px); /* Donne au menu la hauteur restante de l'écran */
+    height: calc(100vh - 60px); /* Donne au menu la hauteur restante de l'écran */
     overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
     -webkit-overflow-scrolling: touch;
     z-index: 999; /* S'assure que le menu est au-dessus du contenu principal */
@@ -233,6 +233,7 @@ nav a:hover {
   .dropdown-content a {
       color: white;
       padding: 12px 20px;
+      text-align: center;
   }
 }
 
@@ -606,8 +607,8 @@ nav a:hover {
   color: black;
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-top: 30px;
-  padding-bottom: 10px;
+  padding-top: 35px;
+  padding-bottom: 5px;
   border-bottom: 2px solid #ddd;
 }
 .club-details h2,
@@ -937,7 +938,7 @@ nav a:hover {
 .partenaires {
  
   background-color: #ffffff;
-  padding: 20px 0%;
+  padding: -20px 0%;
   width: 100%;
 }
 
@@ -977,7 +978,7 @@ nav a:hover {
 /* ===================================== */
 .inscription-section {
   background-color: white;
-  padding: 20px 0%;
+  padding: 40px 0%;
   text-align: center;
   width: 100%;
 }
@@ -1325,11 +1326,11 @@ footer {
 .events-list h3 {
   width: 100%; /* Prend toute la largeur pour centrer le titre */
   text-align: center;
-  margin-bottom: 40px; /* Espacement après le titre */
-  font-size: 2.8em; /* Taille du titre */
+  margin-bottom: 20px; /* Espacement après le titre */
+  font-size: 3em; /* Taille du titre */
   color: black; /* Couleur de titre, similaire à vos liens de navigation */
   border-bottom: 2px solid #ddd; /* Ligne de séparation */
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 /* Style de chaque carte d'événement */
