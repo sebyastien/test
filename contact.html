@@ -20,11 +20,12 @@
          
         <nav class="nav-links"> <a href="index.html">Accueil</a>
             <div class="dropdown">
-                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
                 <div class="dropdown-content">
                     <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
                     <a href="vaureal.html">Vauréal</a>
                     <a href="pontoise.html">Pontoise</a>
+                    <a href="le-club.html">Voir tous les clubs</a>
                 </div>
             </div>
             <a href="evenements.html">Evènements</a>
@@ -37,6 +38,8 @@
             <h1>Contactez l'ASSOA Karaté</h1>
             <p>Nous sommes là pour répondre à toutes vos questions et vous accompagner</p>
         </section>
+
+        <div id="notification-message"></div>
 
     <main class="main-content">
         <section id="contact" class="contact-section">
@@ -52,38 +55,29 @@
                 </p>
 
                 <div class="form">
-                    <form action="https://formsubmit.co/36837ba7d2573b9f2b3933274890e48b" method="POST">
+                    <form action="contact.php" method="POST">
                         <div class="form-group">
                             <label for="name">Nom et Prénom <span class="required">*</span></label>
-                            <input type="text" id="name" name="Nom et Prénom" required>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Votre Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="Votre Email" required>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">Sujet de votre message <span class="required">*</span></label>
-                            <input type="text" id="subject" name="Sujet de votre message" required>
+                            <input type="text" id="subject" name="subject" required>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Message <span class="required">*</span></label>
-                            <textarea id="message" name="Message" required></textarea>
+                            <textarea id="message" name="message" required></textarea>
                         </div>
 
-                        <div class="form-group radio-group">
-                            <label>Êtes-vous déjà adhérent(e) ? <span class="required">*</span></label>
-                            <div class="radio-options">
-                                <input type="radio" id="adherent_yes" name="Adherent" value="Oui" required>
-                                <label for="adherent_yes">Oui</label>
-                                <input type="radio" id="adherent_no" name="Adherent" value="Non">
-                                <label for="adherent_no">Non</label>
-                            </div>
-                        </div>
-
+                        
                         <input type="hidden" name="_template" value="box">
                         <input type="hidden" name="_next" value="https://sebyastien.github.io/test/index.html">
-                        <button type="submit" class="btn send-btn">Envoyer</button>
+                        <button type="envoyer" class="btn send-btn" name="envoyer">Envoyer</button>
                     </form>
                 </div>
             </div>
@@ -119,6 +113,8 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script src="script2.js"></script>
 
 </body>
 </html>

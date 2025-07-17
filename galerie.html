@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ASSOA Karaté</title>
-    <link rel="stylesheet" href="projet.css" />
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Compétition Inter-Clubs</title>
+    <link rel="stylesheet" href="projet.css">
+
 
     <header>
         <div class="logo img"><a href="index.html">
-                    <img src="images/lg.png" alt="logo">
+                    <img src="images/lg.png" alt="Fédération Française de Karaté">
                 </a></div>
         <button class="hamburger-menu" aria-label="Menu de navigation">
             <span class="bar"></span>
@@ -20,11 +19,12 @@
          
         <nav class="nav-links"> <a href="index.html">Accueil</a>
             <div class="dropdown">
-                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
                 <div class="dropdown-content">
                     <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
                     <a href="vaureal.html">Vauréal</a>
                     <a href="pontoise.html">Pontoise</a>
+                    <a href="le-club.html">Voir tous les clubs</a>
                 </div>
             </div>
             <a href="evenements.html">Evènements</a>
@@ -32,40 +32,29 @@
             <a href="contact.html">Contact</a>
         </nav>
     </header>
+   
+</head>
+<body>
 
-    <main class="main-content">
-        <section class="page-banner">
-            <h1>Bienvenue au Club ASSOA Karaté </h1>
-            <p>Forgez votre corps et votre esprit à travers l'art ancestral du Karaté</p>
-        </section>
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1>Galerie - Compétition Inter-Clubs</h1>
+        </div>
 
+        <div class="gallery-slideshow">
+            <img src="images/interclub vauréal/trophée.jpg" alt="Compétition Inter-Clubs Photo 1" class="active">
+            <img src="images/interclub vauréal/1.jpg" alt="Compétition Inter-Clubs Photo 2">
+            <img src="images/interclub vauréal/2.jpg" alt="Compétition Inter-Clubs Photo 3">
+            <img src="images/interclub vauréal/3.jpg" alt="Compétition Inter-Clubs Photo 4">
+            
+            <a class="prev">&#10094;</a> <a class="next">&#10095;</a> </div>
 
- <div id="notification-message"></div>
-
-
-        <section class="partenaires">
-            <h2>Nos Partenaires</h2>
-            <div class="partenaires-logos">
-                <a href="https://www.ffkarate.fr" target="_blank">
-                    <img src="images/image-ffk.jpg" alt="Fédération Française de Karaté">
-                </a>
-                <a href="https://sites.ffkarate.fr/valdoise/" target="_blank">
-                    <img src="images/val-d'oise.png" alt="Comité Val d'Oise de Karaté">
-                </a>
-                <a href="https://fujitoyama.fr/" target="_blank">
-                    <img src="images/fujitoyama.png" alt="Le Fujitoyama">
-                </a>
-                <a href="https://www.bvmlesboucherstraiteurs.fr/boucherie/bvm-puiseux/" target="_blank">
-                    <img src="images/boucherie.png" alt="Les bouchers traiteurs">
-                </a>
-                <a href="https://noris-sfjam.fr/" target="_blank">
-                    <img src="images/noris.jpg" alt="Noris">
-                </a>
-                <a href="https://www.valdoise.fr/2-mon-departement.htm" target="_blank">
-                    <img src="images/val d'oise asso.png" alt="Département du val d'Oise">
-                </a>
+        <div class="dots-container">
             </div>
-        </section>
+    </div>
+    <a href="evenements.html#" class="btn-link">Retour aux Evènements</a>
+ 
+
     </main> <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -97,8 +86,7 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <script src="script2.js"></script>
-
+    <script src="script-defilé.js"></script>
+    
 </body>
 </html>

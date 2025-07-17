@@ -16,18 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Gérer l'ouverture/fermeture du sous-menu 'Le Club' au clic
-    if (dropbtn && dropdownContent) { // Cette condition vérifie si les éléments HTML existent
-        dropbtn.addEventListener('click', function(event) {
-            // Sur mobile (quand le menu hamburger est actif ou la fenêtre est petite)
-            // Utiliser la même media query que dans le CSS (actuellement 768px dans votre projet.css)
-            if (window.innerWidth <= 768 || navLinks.classList.contains('active')) {
-                event.preventDefault(); // Empêche la navigation immédiate vers le-club.html
-                dropdownContent.classList.toggle('show'); // Bascule la visibilité du sous-menu
-            }
-            // Sur desktop, le CSS gère le ':hover', donc le lien naviguera normalement
-            // s'il n'y a pas de 'event.preventDefault()'
-        });
+    // Gérer l'ouverture/fermeture du sous-menu 'Le Club' au clic (PC et Mobile)
+if (dropbtn && dropdownContent) {
+    dropbtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Empêche TOUJOURS la navigation directe du 'dropbtn'
+        dropdownContent.classList.toggle('show'); // Bascule la visibilité du sous-menu
+    });
+
+    // Fermer le sous-menu si on clique en dehors de la zone du dropdown (utile pour mobile et PC)
+    document.addEventListener('click', function(event) {
+        // Vérifie si le clic n'est PAS à l'intérieur du conteneur du dropdown
+        if (dropdownContent && !event.target.closest('.dropdown') && dropdownContent.classList.contains('show')) {
+            dropdownContent.classList.remove('show');
+        }
+    });
+
 
         // Fermer le sous-menu si on clique en dehors de la zone du dropdown (utile pour mobile)
         document.addEventListener('click', function(event) {
@@ -38,3 +41,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+

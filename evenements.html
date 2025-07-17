@@ -20,11 +20,12 @@
          
         <nav class="nav-links"> <a href="index.html">Accueil</a>
             <div class="dropdown">
-                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
                 <div class="dropdown-content">
                     <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
                     <a href="vaureal.html">Vauréal</a>
                     <a href="pontoise.html">Pontoise</a>
+                    <a href="le-club.html">Voir tous les clubs</a>
                 </div>
             </div>
             <a href="evenements.html">Evènements</a>
@@ -43,7 +44,7 @@
 
     <main class="container">
     <section class="events-list">
-        <h3>Prochains Événements</h3>
+        <h3 id="event-future">Prochains Événements</h3>
         <div class="event-card">
             <img src="images/karaté fond.png" alt="Stage avec les experts japonais et Jean Pierre Lavorato">
             <div class="event-content">
@@ -51,7 +52,6 @@
                 <p class="event-date">Date: 18 et 19 octobre 2025</p>
                 <p class="event-location">Lieu : Gymnase Philippe Hémet, Pontoise</p>
                 <p>Participez à un stage exceptionnel avec des experts japonais renommés et le grand maître Jean Pierre Lavorato. Une opportunité unique de perfectionner vos techniques et d'approfondir votre pratique.</p>
-                <a href="#" class="event-button">En savoir plus</a>
             </div>
         </div>
 
@@ -62,18 +62,18 @@
                 <p class="event-date">Date: 28 juin 2025</p>
                 <p class="event-location">Lieu : Gymnase de la Bussie, Vaureéal</p>
                 <p>Les 10 élèves présent ce samedi ont réussi avec brio leur passage de grade 1er dan passé au club. Nous remercions les différents jurys présents ainsi que le professeur du club !! Félicitations encore à tous les karatékas présents !</p>
-                <a href="#" class="event-button">En savoir plus</a>
             </div>
         </div>
 
         <div class="event-card">
-            <img src="https://via.placeholder.com/400x250?text=Stage+Experts+Japonais" alt="Compétitions inter-club">
+            <img src="images/interclub vauréal/trophée.jpg" alt="Compétitions inter-club">
             <div class="event-content">
                 <h4>Compétition Inter-Clubs</h4>
                 <p class="event-date">Date: 22 novembre 2025 à 09h00</p>
-                <p class="event-location">Lieu : Gymnase Roger Couderc, Saint-Ouen-l'Aumône</p>
+                <p class="event-location">Lieu : Gymnase des Toupets, Vauréal</p>
                 <p>Venez encourager nos jeunes talents lors de la compétition inter-clubs. Un événement convivial pour tester les acquis et partager un bon moment autour du karaté.</p>
-                <a href="#" class="event-button">En savoir plus</a>
+                <p>Vous pouvez retrouver quelques images sur la galerie.</p>
+                <a href="galerie.html" class="btn-link">Voir la Galerie</a>
             </div>
         </div>
 
@@ -87,7 +87,17 @@
     <p>Un grand bravo et toutes nos félicitations à notre athlète, <strong>Jupiter Estime</strong>, qui a brillamment représenté notre dojo et a décroché la <strong>1ère place</strong> de sa catégorie !</p>
     <p>Cette performance exceptionnelle est le fruit d'un travail acharné, d'une détermination sans faille et d'un talent incontestable. Nous sommes très fiers de compter un champion de France parmi nous !</p>
     <p>Félicitations encore une fois à Jupiter Estime pour cette magnifique victoire !</p>
-        <a href="#" class="event-button">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="images/master-enfant.jpg" alt="Masterclass à Pontoise">
+            <div class="event-content">
+                <h4>Masterclass à Pontoise</h4>
+                <p class="event-date">Date: 5 et 6 avril 2025</p>
+                <p class="event-location">Lieu : Gymnase Philippe-Hémet, Pontoise</p>
+                <p>Cet événement, dédié à l'approfondissement des techniques et à la philosophie des arts martiaux, a rassemblé des passionnés de tous niveaux désireux de pousser leurs limites.</p>
+                <a href="galerie-master-vaureal.html" class="btn-link">Voir la Galerie</a>
             </div>
         </div>
 
@@ -110,7 +120,6 @@
             <strong> • Jupiter Estime :</strong> Il est sacré <strong>Champion d'Europe</strong> en terminant à la <strong>1ère place</strong> de sa catégorie !
                 </p>
     <p>Encore toutes nos félicitations à nos athlètes pour ces résultats magnifiques qui font honneur à notre club !</p></p>
-                <a href="#" class="event-button">En savoir plus</a>
             </div>
         </div>
 
@@ -148,6 +157,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="script3.js"></script>
 
 </body>
 </html>

@@ -83,30 +83,6 @@ header {
   box-shadow: 0 2px 5px #222(0, 0, 0, 0.3);
 }
 
-/* Règle pour le décalage de la cible de l'ancre */
-#inscription{
-    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
-       plus un petit espace supplémentaire si vous le souhaitez.
-       Testez différentes valeurs pour trouver celle qui convient le mieux. */
-    scroll-margin-top: 80px;
-}
-
-/* Règle pour le décalage de la cible de l'ancre */
-#horaires{
-    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
-       plus un petit espace supplémentaire si vous le souhaitez.
-       Testez différentes valeurs pour trouver celle qui convient le mieux. */
-    scroll-margin-top: 80px;
-}
-
-/* Règle pour le décalage de la cible de l'ancre */
-#event-future{
-    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
-       plus un petit espace supplémentaire si vous le souhaitez.
-       Testez différentes valeurs pour trouver celle qui convient le mieux. */
-    scroll-margin-top: 80px;
-}
-
 .logo {
   font-size: 24px;
   font-weight: bold;
@@ -213,28 +189,7 @@ nav a:hover {
 
 /* Assurez-vous que le texte "Le Club" est bien blanc */
 .dropbtn {
-     position: relative; /* Nécessaire pour positionner la pseudo-classe ::after */
-    padding-right: 25px; /* Espace pour la flèche à droite */
-    /* Assurez-vous que le texte du lien est bien visible, ajustez la couleur si nécessaire */
-    color: white; /* Exemple, si votre barre de navigation est sombre */
-    text-decoration: none; /* Pour enlever le soulignement par défaut des liens */
-    /* ... autres styles de votre .dropbtn ... */
-}
-.dropbtn::after {
-    content: '\25BC'; /* Code Unicode pour un triangle noir vers le bas (▼) */
-    font-size: 0.7em; /* Taille de la flèche */
-    color: inherit; /* Hérite de la couleur du texte parent */
-    position: absolute;
-    right: 8px; /* Ajustez la position de la flèche par rapport au bord droit */
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease; /* Transition douce pour la rotation */
-    pointer-events: none; /* Permet au clic de passer à l'élément parent */
-}
-
-/* Style de la flèche lorsque le menu est ouvert */
-.dropbtn.active::after {
-    transform: translateY(-50%) rotate(180deg); /* La flèche pointe vers le haut */
+    color: white;
 }
 
 /* Média queries pour la responsivité (si votre hamburger est activé) */
@@ -293,15 +248,9 @@ nav a:hover {
   }
 
   .dropbtn {
-        width: 100%; /* Le bouton prend toute la largeur du conteneur mobile */
-        text-align: left; /* Aligner le texte à gauche */
-        padding-left: 10px; /* Un peu de padding à gauche */
-        /* Assurez-vous que le padding-right est suffisant pour la flèche */
-    }
-
-    .dropbtn::after {
-        left: 70px; /* Ajustez la position de la flèche pour mobile si nécessaire */
-    }
+    width: 100%; /* Le bouton prend toute la largeur */
+    text-align: center;
+  }
 
   .dropdown-content {
     position: static; /* Important pour que le sous-menu s'intègre au flux mobile */
@@ -1156,11 +1105,9 @@ nav a:hover {
 }
 
 .benefits-grid {
-    display: grid;
-    /* Augmentez la valeur 'minmax' pour des cadres plus grands. */
-    /* Par exemple, de 250px à 300px ou 350px. */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Cadres plus grands */
-    gap: 30px;
+    display: grid; /* Utilise CSS Grid pour un agencement en grille */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 250px minimum, ou autant de colonnes que possible */
+    gap: 30px; /* Espacement entre les éléments de la grille */
 }
 
 .benefit-item {
@@ -1176,9 +1123,8 @@ nav a:hover {
 }
 
 .benefit-item img {
-   max-width : 100%;
     width: auto; /* Taille des icônes */
-    height: 200px;
+    height: 300px;
     margin-bottom: 15px;
 }
 
@@ -1789,93 +1735,6 @@ footer {
   }
 }
 
-/* Styles pour la nouvelle section de galerie */
-.photo-gallery {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-.photo-gallery h3 {
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 2.2em;
-}
-
-.gallery-grid {
-    display: grid; /* Utilise CSS Grid pour une mise en page flexible */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes sur grand écran, s'adapte sur petit */
-    gap: 20px; /* Espace entre les images */
-    max-width: 1200px;
-    margin: 0 auto; /* Centre la grille */
-}
-
-.gallery-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden; /* Pour que les coins arrondis s'appliquent à l'image */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease-in-out;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px); /* Petit effet au survol */
-}
-
-.gallery-item img {
-    width: 100%; /* L'image prend toute la largeur de son conteneur */
-    height: 200px; /* Hauteur fixe pour uniformiser */
-    object-fit: cover; /* Recadre l'image pour couvrir l'espace sans la déformer */
-    display: block; /* Supprime l'espace sous l'image */
-}
-
-.gallery-item p {
-    padding: 15px;
-    font-size: 0.9em;
-    color: #555;
-    line-height: 1.4;
-}
-
-/* Styles Responsifs pour la galerie */
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 colonnes sur tablette */
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr; /* 1 colonne sur mobile */
-    }
-}
-
-/* ... (Tes styles CSS existants pour .photo-gallery, .gallery-grid, .gallery-item, etc.) ... */
-
-/* Nouvelle règle CSS pour masquer les éléments */
-.hidden {
-    display: none !important; /* Important pour s'assurer que ça prend le dessus */
-}
-
-/* Styles pour le bouton d'affichage/masquage */
-.toggle-gallery-button {
-    background-color: #007BFF; /* Couleur bleue, tu peux changer */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-top: 20px; /* Espace au-dessus du bouton */
-    margin-bottom: 30px; /* Espace en dessous du bouton */
-    transition: background-color 0.3s ease;
-}
-
-.toggle-gallery-button:hover {
-    background-color: #0056b3;
-}
-
-
 
 /* ===================================== */
 /* Messages de Notification (Succès/Erreur) */
@@ -1924,148 +1783,6 @@ footer {
     transform: translateY(15px); /* Décale visuellement le message de 15px vers le bas lorsqu'il est affiché */
 }
 
-/*Section Galerie*/
 
-        
-        .gallery-container {
-            position: relative;
-            max-width: 800px; /* Largeur maximale de la galerie */
-            width: 90%; /* Prend 90% de la largeur disponible */
-            margin: 100px auto 20px auto; 
-            background-color: #222; /* Fond pour la galerie elle-même */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            display: flex; /* Utilise flexbox pour centrer le contenu */
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .gallery-header {
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            background-color: #333;
-            border-bottom: 1px solid #444;
-        }
-        .gallery-header h1 {
-            margin-top : 10px;
-            color: #fff;
-            font-size: 1.8em;
-        }
-
-        .gallery-slideshow {
-            display: flex;
-            overflow: hidden; /* Important pour le carrousel */
-            width: 100%;
-            position: relative; /* Pour positionner les flèches */
-        }
-
-        .gallery-slideshow img {
-            width: 100%;
-            height: auto;
-            max-height: 400px; /* Hauteur max pour les images */
-            object-fit: contain; /* L'image s'adapte sans être coupée, avec des bandes si nécessaire */
-            display: none; /* Toutes les images sont masquées par défaut */
-            animation: fadeIn 1s ease-in-out; /* Animation de fondu */
-        }
-
-        .gallery-slideshow img.active {
-            display: block; /* Affiche l'image active */
-        }
-
-        /* Flèches de navigation */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        /* Indicateurs (points) */
-        .dots-container {
-            text-align: center;
-            padding: 15px 0;
-            background-color: #333;
-            width: 100%;
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .dot.active, .dot:hover {
-            background-color: #717171;
-        }
-
-        /* Bouton de retour */
-        .back-button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            text-decoration: none; /* Pour les liens */
-            display: inline-block; /* Pour que padding et margin fonctionnent bien */
-        }
-        .back-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Animation de fondu pour les images */
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .gallery-slideshow img {
-                max-height: 400px;
-            }
-            .prev, .next {
-                font-size: 16px;
-                padding: 12px;
-                margin-top: -18px;
-            }
-        }
-        @media (max-width: 480px) {
-            .gallery-slideshow img {
-                max-height: 300px;
-            }
-            .prev, .next {
-                font-size: 14px;
-                padding: 10px;
-                margin-top: -16px;
-            }
-        }
 
 
