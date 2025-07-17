@@ -145,6 +145,13 @@ nav a:hover {
     display: inline-block;
 }
 
+.dropdown-content.show + .dropbtn::after { /* Note: le sélecteur d'adjacence générale '+' n'est pas idéal ici car dropbtn est AVANT dropdown-content */
+    /* Mieux est de cibler directement sur le dropbtn s'il a une classe "active" lors de l'ouverture */
+    /* Pour l'instant, si vous gérez la classe 'show' sur dropdown-content, la flèche ne tournera pas via ce sélecteur. */
+    /* Idéalement, ajoutez une classe 'active' à .dropbtn quand le dropdown est ouvert via JS, et utilisez .dropbtn.active::after */
+}
+
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -203,7 +210,14 @@ nav a:hover {
 }
 
 
-
+/* Styles pour les liens de navigation normaux (desktop) */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
 
 /* Styles pour le survol général des liens et dropbtn */
 .nav-links a:hover, .dropbtn:hover {
@@ -213,23 +227,25 @@ nav a:hover {
 
 /* Assurez-vous que le texte "Le Club" est bien blanc */
 .dropbtn {
-     position: relative; /* Nécessaire pour positionner la pseudo-classe ::after */
-    padding-right: 25px; /* Espace pour la flèche à droite */
-    /* Assurez-vous que le texte du lien est bien visible, ajustez la couleur si nécessaire */
-    color: white; /* Exemple, si votre barre de navigation est sombre */
-    text-decoration: none; /* Pour enlever le soulignement par défaut des liens */
-    /* ... autres styles de votre .dropbtn ... */
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* Assure que padding et positionnement fonctionnent */
+    text-decoration: none; /* Enlève le soulignement par défaut des liens */
+    position: relative; /* Pour positionner la flèche relative au bouton */
+    padding-right: 30px; /* Espace pour la flèche */
 }
 .dropbtn::after {
-    content: '\25BC'; /* Code Unicode pour un triangle noir vers le bas (▼) */
-    font-size: 0.7em; /* Taille de la flèche */
-    color: inherit; /* Hérite de la couleur du texte parent */
+     content: '▼'; /* Caractère de flèche vers le bas */
     position: absolute;
-    right: 8px; /* Ajustez la position de la flèche par rapport au bord droit */
+    right: -5px; /* Ajuste la position de la flèche */
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.3s ease; /* Transition douce pour la rotation */
-    pointer-events: none; /* Permet au clic de passer à l'élément parent */
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
 }
 
 /* Style de la flèche lorsque le menu est ouvert */
@@ -277,8 +293,8 @@ nav a:hover {
   }
 
   nav.nav-links a {
-    margin: 10px 0; /* Plus d'espace vertical pour les liens */
-    padding: 10px 0;
+    margin: auto 0; /* Plus d'espace vertical pour les liens */
+    padding: auto 0;
     border-bottom: 1px solid #0b063b; /* Optionnel: séparation entre les liens */
   }
 
@@ -288,19 +304,25 @@ nav a:hover {
 
   /* DROPDOWN STYLES FOR MOBILE */
   .dropdown {
-    width: 100%; /* Le dropdown prend toute la largeur en mode mobile */
-    display: block; /* S'assure que le dropdown lui-même est un bloc */
+    width: 100%; /* Les liens et dropdowns prennent toute la largeur */
+        text-align: center; /* Alignement du texte à gauche */
+        padding: 0; /* Réinitialise le padding global des liens */
+        margin-bottom: 5px; /* Ajoute de l'espace entre les éléments de navigation */
   }
 
   .dropbtn {
-        width: 100%; /* Le bouton prend toute la largeur du conteneur mobile */
-        text-align: left; /* Aligner le texte à gauche */
-        padding-left: 10px; /* Un peu de padding à gauche */
-        /* Assurez-vous que le padding-right est suffisant pour la flèche */
+       width: 100%; /* Le bouton du dropdown prend toute la largeur */
+        text-align: center; /* Aligne le texte du bouton à gauche */
+        padding: 150px 15px; /* Padding pour le bouton du dropdown */
+        padding-right: 0px; /* Garde l'espace pour la flèche */
+        /* Ajout de marge en bas pour espacer les dropdowns */
+        margin-bottom: 5px; /* Ajoutez cette ligne */
     }
 
     .dropbtn::after {
-        left: 70px; /* Ajustez la position de la flèche pour mobile si nécessaire */
+        left: 125px; /* Ajuste la position de la flèche sur mobile */
+        top: 50%;
+        transform: translateY(-50%);
     }
 
   .dropdown-content {
@@ -320,6 +342,7 @@ nav a:hover {
       color: white;
       padding: 12px 20px;
       text-align: center;
+      display: block;
   }
 }
 
@@ -1092,9 +1115,9 @@ nav a:hover {
 }
 
 .about-image {
-    width: 40%; /* Largeur de l'image */
-    max-width: 300px; /* Largeur maximale pour les écrans larges */
-    height: auto;
+    width: 50%; /* Largeur de l'image */
+    max-width: 300px 0; /* Largeur maximale pour les écrans larges */
+    height: 200px 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px #0b063b(0, 0, 0, 0.1);
 }
