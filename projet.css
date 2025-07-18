@@ -640,13 +640,16 @@ nav a:hover {
 .page-banner3 .gallery-slideshow img {
     position: absolute;
     width: 100%;
-    height: 100%; /* Important pour que l'image remplisse toute la hauteur du conteneur */
-    object-fit: cover; /* Recadre l'image sans la déformer pour couvrir la zone */
-    object-position: center; /* Assurez-vous que la partie centrale de l'image est visible */
-    
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0; /* Rend toutes les images transparentes par défaut */
+    transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
     /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
-    /* min-height: 500px; */ 
+    /* min-height: 500px; */
     /* min-width: none; */
+    /* display: none;  <-- Supprimez cette ligne */
+    /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
 }
 
 .page-banner3 .gallery-slideshow img.active {
@@ -729,16 +732,23 @@ nav a:hover {
         }
 
         .gallery-slideshow img {
-            width: 100%;
-            height: auto;
-            max-height: auto; /* Hauteur max pour les images */
-            object-fit: contain; /* L'image s'adapte sans être coupée, avec des bandes si nécessaire */
-            display: none; /* Toutes les images sont masquées par défaut */
-            animation: fadeIn 1s ease-in-out; /* Animation de fondu */
+            position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0; /* Rend toutes les images transparentes par défaut */
+    transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
+    /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
+    /* min-height: 500px; */
+    /* min-width: none; */
+    /* display: none;  <-- Supprimez cette ligne */
+    /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
         }
 
         .gallery-slideshow img.active {
-            display: block; /* Affiche l'image active */
+           /* display: block; */
+    opacity: 1;
         }
 
         
@@ -834,6 +844,7 @@ nav a:hover {
 
 /* Styles pour la section des horaires sur la page Le Club */
 .club-schedule p {
+  font-size: 1.1em;
   /* Ceci peut servir pour tous les paragraphes dans club-schedule, ajustez si besoin */
   margin-bottom: 20px; /* Ajoute un espace sous le paragraphe introductif */
 }
@@ -878,6 +889,7 @@ nav a:hover {
 }
 
 .club-location {
+  font-size: 1.1em;
   margin-bottom: 00px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1090,6 +1102,10 @@ nav a:hover {
     padding-bottom: 5px;
     border-bottom: 2px solid #0b063b;
   
+}
+
+.contact-header p{
+  font-size: 1.1em;
 }
 
 .contact-grid {
@@ -1549,6 +1565,10 @@ nav a:hover {
     border-bottom: 2px solid #0b063b;
 }
 
+.inscription-section p{
+  font-size: 1.1em;
+}
+
 .intro-text {
   font-size: 18px;
   margin-bottom: 20px;
@@ -1589,6 +1609,11 @@ nav a:hover {
   color: #0b063b;
   text-decoration: underline;
 }
+
+.email-text p{
+  font-size: 1.1em;
+}
+
 
 
 /* ===================================== */
@@ -2147,138 +2172,430 @@ footer {
 
 /*Section Galerie*/
 
- /* Styles pour la galerie */
-.manual-gallery-container { /* CHANGÉ ICI */
-    position: relative;
-            max-width: 800px; /* Largeur maximale de la galerie */
-            width: 90%; /* Prend 90% de la largeur disponible */
-            margin: 100px auto 20px auto; 
-            background-color: #222; /* Fond pour la galerie elle-même */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            display: flex; /* Utilise flexbox pour centrer le contenu */
-            flex-direction: column;
-            align-items: center;
+
+.manual-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 petites colonnes sur mobile */
+    gap: 10px; /* Moins d'espace sur mobile */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
-.manual-gallery-header {
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            background-color: #333;
-            border-bottom: 1px solid #222;
-        }
-
-.manual-gallery-header h1 { /* CHANGÉ ICI */
-    margin-top : 10px;
-    color: #fff;
-    font-size: 1.8em;       
+.manual-gallery-item {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    height: 180px; /* Hauteur des miniatures sur mobile */
+    /* Assurez-vous que les classes spécifiques ne perturbent pas le mobile */
+    grid-column: span 1; /* Chaque item prend 1 colonne */
+    grid-row: span 1;    /* Chaque item prend 1 rangée */
 }
 
-/* Section de la galerie pour le diaporama manuel */
-.manual-gallery-section {
-    position: relative;
-    max-width: 800px;
+.manual-gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.manual-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ------------------------------------------------------------- */
+/* MEDIA QUERY pour ÉCRANS PC (minimum 1024px ou 1200px) */
+
+/* ... (Vos styles pour mobile et styles généraux au-dessus) ... */
+
+/* ------------------------------------------------------------- */
+/* MEDIA QUERY pour ÉCRANS PC (minimum 1024px) */
+
+@media (min-width: 1024px) {
+    .manual-gallery-container {
+        display: grid;
+        /* La grille de base semble être 5 colonnes */
+        grid-template-columns: repeat(4, 1fr);
+        /* Définir une hauteur de base pour les rangées. Ajustez si les images sont trop étirées/compressées. */
+        grid-auto-rows: minmax(200px, auto); /* Hauteur de ligne par défaut */
+        gap: 10px; /* Espacement entre les images */
+        max-width: 1200px; /* Largeur maximale de la galerie */
+        margin: 0 auto;
+        padding: 10px;
+        /* grid-auto-flow: dense;  -- On peut l'utiliser si des espaces persistent,
+                                   mais essayons un placement plus explicite d'abord. */
+    }
+
+    .manual-gallery-item {
+        height: auto; /* La hauteur est gérée par grid-auto-rows et grid-row-end */
+        /* Par défaut, chaque item prend 1 colonne et 1 rangée */
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* --- Placement des images spécifiques selon votre schéma --- */
+
+    /* Image 1 (La grande image en haut à gauche) */
+    .manual-gallery-item-1 { /* Assurez-vous que c'est bien la 1ère image dans votre HTML */
+        grid-column: span 2; /* Prend 3 colonnes */
+        grid-row: span 2;    /* Prend 2 rangées */
+    }
+
+    /* Image 2 (Petite, à droite de la grande image, haut-centre) */
+    .manual-gallery-item-2 { /* Assurez-vous que c'est la 2ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (4) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 3 / span 1;  /* Si vous voulez être explicite sur la colonne de départ */
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 3 (Petite, à droite de la 2, haut-droite) */
+    .manual-gallery-item-3 { /* Assurez-vous que c'est la 3ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (5) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 4 / span 1; 
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 4 (Image large qui s'étend sur toute la largeur, sous l'image 1 et potentiellement d'autres) */
+    .manual-gallery-item-4 { /* Assurez-vous que c'est la 4ème image dans votre HTML */
+        grid-column: span 2; /* Prend 5 colonnes (toute la largeur de la grille) */
+         grid-row: span 1;  /* Pour la forcer à commencer à la 3ème rangée si elle ne se place pas naturellement */
+    }
+
+    /* Image 5 (Grande image en bas à gauche, sous l'image large) */
+    .manual-gallery-item-5 { /* Assurez-vous que c'est la 5ème image dans votre HTML */
+        grid-column: span 1; /* Prend 2 colonnes */
+        grid-row: span 1;    /* Prend 2 rangées (pour descendre un peu) */
+        /* Vous devrez peut-être ajuster la grid-row de départ si elle ne se place pas juste en dessous de .gallery-item-4 */
+        /* grid-row-start: 4; */ /* Par exemple, si l'image 4 est sur la rangée 3, celle-ci commencerait sur la rangée 4 */
+    }
+
+    /* Image 6 (À droite de l'image 5) */
+    .manual-gallery-item-6 { /* Assurez-vous que c'est la 6ème image */
+        grid-column: span 1; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 7 (À droite de l'image 6) */
+    .manual-gallery-item-7 { /* Assurez-vous que c'est la 7ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 8 (À droite de l'image 7, ou sous l'image 6/7 si l'espace le permet) */
+    .manual-gallery-item-8 { /* Assurez-vous que c'est la 8ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    .manual-gallery-item-9 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-10 {
+        grid-column: span 1;
+        grid-row: span 3;
+    } 
+
+    .manual-gallery-item-11 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-12 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-13 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-14 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-15 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-16 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-17 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-18 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-19 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-20 {
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+    .manual-gallery-item-21 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-22 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-23 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-24 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-25 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-26 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-27 {
+        grid-column: span 1;
+        grid-row: span 3;
+    }
+    .manual-gallery-item-28 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-29 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-30 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-31 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-32 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-33 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-34 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-35 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-36 { /* Assurez-vous que c'est bien la 1ère image dans votre HTML */
+        grid-column: span 2; /* Prend 3 colonnes */
+        grid-row: span 2;    /* Prend 2 rangées */
+    }
+
+    /* Image 2 (Petite, à droite de la grande image, haut-centre) */
+    .manual-gallery-item-37 { /* Assurez-vous que c'est la 2ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (4) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 3 / span 1;  /* Si vous voulez être explicite sur la colonne de départ */
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 3 (Petite, à droite de la 2, haut-droite) */
+    .manual-gallery-item-38 { /* Assurez-vous que c'est la 3ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (5) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 4 / span 1; 
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 4 (Image large qui s'étend sur toute la largeur, sous l'image 1 et potentiellement d'autres) */
+    .manual-gallery-item-39 { /* Assurez-vous que c'est la 4ème image dans votre HTML */
+        grid-column: span 2; /* Prend 5 colonnes (toute la largeur de la grille) */
+         grid-row: span 1;  /* Pour la forcer à commencer à la 3ème rangée si elle ne se place pas naturellement */
+    }
+
+    /* Image 5 (Grande image en bas à gauche, sous l'image large) */
+    .manual-gallery-item-40 { /* Assurez-vous que c'est la 5ème image dans votre HTML */
+        grid-column: span 1; /* Prend 2 colonnes */
+        grid-row: span 1;    /* Prend 2 rangées (pour descendre un peu) */
+        /* Vous devrez peut-être ajuster la grid-row de départ si elle ne se place pas juste en dessous de .gallery-item-4 */
+        /* grid-row-start: 4; */ /* Par exemple, si l'image 4 est sur la rangée 3, celle-ci commencerait sur la rangée 4 */
+    }
+
+    /* Image 6 (À droite de l'image 5) */
+    .manual-gallery-item-41 { /* Assurez-vous que c'est la 6ème image */
+        grid-column: span 1; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 7 (À droite de l'image 6) */
+    .manual-gallery-item-42 { /* Assurez-vous que c'est la 7ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 8 (À droite de l'image 7, ou sous l'image 6/7 si l'espace le permet) */
+    .manual-gallery-item-43 { /* Assurez-vous que c'est la 8ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    .manual-gallery-item-44 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-45 {
+        grid-column: span 1;
+        grid-row: span 3;
+    } 
+    
+
+    /* IMPORTANT : Pour les images qui NE SONT PAS des grandes images et qui doivent remplir les trous,
+       vous pouvez compter sur l'auto-placement si vous utilisez grid-auto-flow: dense;
+       ou vous devrez leur donner des grid-column / grid-row explicites si l'auto-placement
+       ne fonctionne pas comme vous le souhaitez. */
+
+    /* Ajustements des boutons de la lightbox sur PC */
+    .close-button, .prev-button, .next-button {
+        font-size: 50px;
+    }
+}
+
+/* ... (Le reste de votre CSS pour la lightbox) ... */
+
+
+
+/* ------------------------------------------------------------- */
+/* Styles de la Lightbox (pas de changement ici) */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
     margin: auto;
+    animation: zoomIn 0.3s ease-out;
 }
 
-.manual-gallery-slideshow {
-   display: flex;
-   overflow: hidden;
-   width: 100%;
-   position: relative;
-   align-items: center; /* Permet de centrer verticalement les images si elles sont plus petites */
-   justify-content: center; /* Permet de centrer horizontalement les images */
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
 }
 
-.manual-gallery-slideshow img {
-   width: 100%;
-   height: auto; /* L'image prend 100% de la hauteur du conteneur fixe */
-   max-height: 400px; /* Conservez cette propriété pour ne pas dépasser 400px si l'image est plus grande */
-   object-fit: contain; /* Ou 'cover' selon l'effet désiré, comme discuté précédemment */
-   display: none;
-   animation: fadeIn 1s ease-in-out;
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px; /* Taille par défaut, sera surchargée par PC media query */
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.manual-gallery-slideshow img.active {
-    display: block; /* Affiche l'image active */
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* Flèches Précédent/Suivant */
-.manual-prev, .manual-next {
+.prev-button, .next-button {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     width: auto;
     padding: 16px;
     color: white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px; /* Taille par défaut, sera surchargée par PC media query */
     transition: 0.6s ease;
-    /* Supprimez ou ajustez si vous aviez un border-radius spécifique ici,
-       car les flèches individuelles gèrent maintenant leurs propres bords. */
-    user-select: none;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 10;
-}
-
-.manual-prev {
-    left: 0; /* AJOUTÉ ICI : Colle la flèche 'précédent' à l'extrémité gauche */
     border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    transform: translateY(-50%);
 }
 
-.manual-next {
-    right: 0; /* AJOUTÉ ICI : Colle la flèche 'suivant' à l'extrémité droite */
+.prev-button {
+    left: 0;
     border-radius: 3px 0 0 3px;
 }
 
-.manual-prev:hover, .manual-next:hover {
+.next-button {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev-button:hover, .next-button:hover {
     background-color: rgba(0,0,0,0.8);
+}      
+
+
+
+.manual-gallery-titre h1{
+  font-size: 3em;
+  color: #0b063b;
+  padding: 90px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 3em;
+    color: #0b063b; /* Ou une autre couleur de votre palette */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #0b063b;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #0b063b;
 }
 
-/* Points indicateurs */
-.manual-dots-container {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #333;
-    width: 100%;
-}
 
-.dot {
+/* Style du bouton "Retour en haut"*/
+#scrollToTopBtn {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    /* Utilisation de vmin pour un meilleur comportement au zoom */
+    bottom: 2.5vmin;
+    right: 2.5vmin;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #0b063b; /* Un rouge vif, comme une ceinture ou un logo */
+    color: white; /* Flèche blanche */
     cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
+    /* Utilisation de vmin pour le padding et la taille de police */
+    padding: 1.5vmin 2vmin;
+    border-radius: 5px; /* Angles légèrement moins arrondis */
+    font-size: 2vmin;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* Ombre plus prononcée */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Légère ombre sur le texte */
 }
 
-.dot.active, .dot:hover {
-    background-color: #717171;
+#scrollToTopBtn:hover {
+    background-color: #0b063b; /* Rouge plus foncé au survol */
+    transform: scale(1.05); /* Léger agrandissement (cet effet reste le même) */
 }
-
-/* Bouton de retour */
-
-/* Animation de fondu pour les images */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-@media (max-width: 768px) {
-    
-      .manual-gallery-slideshow img {
-        max-height: 400px;
-    }
-    .manual-prev, .manual-next {
-        font-size: 16px;
-        padding: 12px;
-        margin-top: -18px;
-    }
-}       
-        
-
 

@@ -42,21 +42,34 @@
 </head>
 <body>
 
-    <div class="manual-gallery-container">
-        <div class="manual-gallery-header">
-            <h1>Galerie - Compétition Inter-Clubs</h1>
+    <div class="manual-gallery-titre">
+            <h1>Galerie - Masterclass Pontoise</h1>
         </div>
 
-        <div class="manual-gallery-slideshow">
-            <img src="images/interclub vauréal/trophée.jpg" alt="Compétition Inter-Clubs Photo 1" class="active">
-            <img src="images/interclub vauréal/1.jpg" alt="Compétition Inter-Clubs Photo 2">
-            <img src="images/interclub vauréal/2.jpg" alt="Compétition Inter-Clubs Photo 3">
-            <img src="images/interclub vauréal/3.jpg" alt="Compétition Inter-Clubs Photo 4">
-            
-            <a class="manual-prev">&#10094;</a> <a class="manual-next">&#10095;</a> </div>
+        <div class="manual-gallery-container">
+    <a href="images/interclub vauréal/trophée.jpg" data-manual-gallery-id="1" class="manual-gallery-item manual-gallery-item-1">
+        <img src="images/interclub vauréal/trophée.jpg" alt="Compétition Inter-Clubs Photo 1">
+    </a>
+    <a href="images/interclub vauréal/1.jpg" data-manual-gallery-id="2" class="manual-gallery-item manual-gallery-item-2">
+        <img src="images/interclub vauréal/1.jpg" alt="Compétition Inter-Clubs Photo 2">
+    </a>
+    <a href="images/interclub vauréal/2.jpg" data-manual-gallery-id="3" class="manual-gallery-item manual-gallery-item-3">
+        <img src="images/interclub vauréal/2.jpg" alt="Compétition Inter-Clubs Photo 3">
+    </a>
 
-        <div class="manual-dots-container">
-            </div>
+    <a href="images/interclub vauréal/3.jpg" data-manual-gallery-id="4" class="manual-gallery-item manual-gallery-item-4 manual-gallery-item-wide">
+        <img src="images/interclub vauréal/3.jpg" alt="Compétition Inter-Clubs Photo 4">
+    </a>
+</div>
+
+
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-button">&times;</span>
+        <img src="" alt="Image agrandie" class="lightbox-content" id="lightbox-img">
+        <a class="prev-button">&#10094;</a>
+        <a class="next-button">&#10095;</a>
+    </div>
     </div>
     <a href="evenements.html#" class="btn-link">Retour aux Evènements</a>
  
@@ -91,8 +104,12 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="script-defilé.js"></script>
+    <button id="scrollToTopBtn" title="Retour en haut">↑</button>
+    <script src="script-en-haut.js"></script>
+    <script src="script-hamburger.js"></script>
+    <script src="script-photo.js"></script>
     
 </body>
 </html>
+
+   
