@@ -606,7 +606,7 @@ nav a:hover {
 /* MODIFIEZ CETTE RÈGLE (ou ajoutez-la si elle n'existe pas pour .page-banner3) */
 /* Modifiez .page-banner3 pour avoir une min-height comme .page-banner */
 .page-banner3 {
-    width: 100vw; /* J'ai changé 100% en 100vw pour s'assurer que ça prend bien toute la largeur du viewport */
+    width: 100%; /* J'ai changé 100% en 100vw pour s'assurer que ça prend bien toute la largeur du viewport */
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -921,7 +921,9 @@ nav a:hover {
 }
 
 /* 6.3. Subtitles */
-.club-presentation h3,
+.club-presentation p{
+  font-size: 1.1em;
+}
 .details-section h3 {
   font-size: 1.8em;
   color: #0056b3;
@@ -929,6 +931,15 @@ nav a:hover {
   margin-bottom: 15px;
   border-bottom: 1px dotted #0b063b;
   padding-bottom: 5px;
+}
+
+.details-section ul{
+  padding: 5px 5px;
+  font-size: 0.9em;
+}
+
+.details-section{
+  font-size: 1.1em;
 }
 
 /* 6.4. Paragraphs and Lists */
@@ -1288,7 +1299,9 @@ nav a:hover {
 .about-us h2 {
     font-size: 3em;
     color: #0b063b;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
     border-bottom: 2px solid #0b063b;
 }
 
