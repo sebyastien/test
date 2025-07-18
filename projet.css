@@ -236,8 +236,8 @@ nav a:hover {
     display: inline-block; /* Assure que padding et positionnement fonctionnent */
     text-decoration: none; /* Enlève le soulignement par défaut des liens */
     position: relative; /* Pour positionner la flèche relative au bouton */
-    padding-right: 30px; /* Espace pour la flèche */
-}
+    }
+
 .dropbtn::after {
      content: '▼'; /* Caractère de flèche vers le bas */
     position: absolute;
@@ -601,6 +601,191 @@ nav a:hover {
   position: relative;
   z-index: 1; /* Place le contenu AU-DESSUS de l'overlay et de la vidéo */
 }
+
+/* Styles pour le conteneur principal du diaporama */
+/* MODIFIEZ CETTE RÈGLE (ou ajoutez-la si elle n'existe pas pour .page-banner3) */
+/* Modifiez .page-banner3 pour avoir une min-height comme .page-banner */
+.page-banner3 {
+    width: 100vw; /* J'ai changé 100% en 100vw pour s'assurer que ça prend bien toute la largeur du viewport */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+
+    min-height: 600px; /* Définit la hauteur minimale sur les grands écrans */
+    height: auto;      /* Permet à la hauteur de s'ajuster si le contenu dépasse */
+    margin-top: 60px; /* Pour éviter que la bannière ne soit sous le header */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Le reste de votre CSS pour le diaporama et le texte */
+
+/* Le conteneur du diaporama doit occuper toute la place de la bannière */
+.page-banner3 .gallery-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Important : Prend 100% de la hauteur de .page-banner3 (y compris min-height) */
+    overflow: hidden;
+    z-index: 1; /* Assurez-vous d'avoir un z-index pour le positionnement */
+}
+
+.page-banner3 .gallery-slideshow img {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Important pour que l'image remplisse toute la hauteur du conteneur */
+    object-fit: cover; /* Recadre l'image sans la déformer pour couvrir la zone */
+    object-position: center; /* Assurez-vous que la partie centrale de l'image est visible */
+    
+    /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
+    /* min-height: 500px; */ 
+    /* min-width: none; */
+}
+
+.page-banner3 .gallery-slideshow img.active {
+    /* display: block; */
+    opacity: 1;
+}
+
+/* L'overlay assombrissant */
+.page-banner3 .gallery-slideshow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+/* Texte (h1 et p) par-dessus la bannière */
+.page-banner3 h1,
+.page-banner3 p {
+    position: relative;
+    z-index: 3; /* Le texte doit être au-dessus de l'overlay (2) */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.page-banner3 h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.page-banner3 p {
+    font-size: 1.5em;
+}
+
+/* Les règles pour .banner-content ne sont pas appliquées si votre HTML n'utilise pas cette div.
+   Assurez-vous que votre HTML est toujours :
+   <section class="page-banner3">
+       <div class="gallery-slideshow"> ... </div>
+       <h1> ... </h1>
+       <p> ... </p>
+   </section>
+   Si vous avez ajouté <div class="banner-content">, alors il faudra ajuster les z-index et ciblages.
+   Pour l'instant, je suppose que vous n'avez PAS ajouté banner-content dans le HTML.
+*/
+.gallery-container {
+            position: relative;
+            max-width: 800px; /* Largeur maximale de la galerie */
+            width: 90%; /* Prend 90% de la largeur disponible */
+            margin: 100px auto 20px auto; 
+            background-color: #222; /* Fond pour la galerie elle-même */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex; /* Utilise flexbox pour centrer le contenu */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-header {
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: #333;
+            border-bottom: 1px solid #444;
+        }
+        .gallery-header h1 {
+            margin-top : 10px;
+            color: #fff;
+            font-size: 1.8em;
+        }
+
+        .gallery-slideshow {
+            display: flex;
+            overflow: hidden; /* Important pour le carrousel */
+            width: 100%;
+            position: relative; /* Pour positionner les flèches */
+        }
+
+        .gallery-slideshow img {
+            width: 100%;
+            height: auto;
+            max-height: auto; /* Hauteur max pour les images */
+            object-fit: contain; /* L'image s'adapte sans être coupée, avec des bandes si nécessaire */
+            display: none; /* Toutes les images sont masquées par défaut */
+            animation: fadeIn 1s ease-in-out; /* Animation de fondu */
+        }
+
+        .gallery-slideshow img.active {
+            display: block; /* Affiche l'image active */
+        }
+
+        
+
+        /* Animation de fondu pour les images */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-slideshow img {
+                max-height: 400px;
+            }
+            .prev, .next {
+                font-size: 16px;
+                padding: 12px;
+                margin-top: -18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-slideshow img {
+                max-height: 300px;
+            }
+            .prev, .next {
+                font-size: 14px;
+                padding: 10px;
+                margin-top: -16px;
+            }
+        }
+/* Ajustements responsifs */
+@media (max-width: 768px) {
+    .page-banner3 {
+        min-height: 300px; /* Adaptez la hauteur minimale pour mobile */
+        height: auto;
+    }
+    .page-banner3 h1 { /* Ciblez directement h1 */
+        font-size: 2em;
+    }
+    .page-banner3 p { /* Ciblez directement p */
+        font-size: 1.2em;
+    }
+    /* ... le reste de vos règles média ... */
+}
+
+
 
 
 /* ===================================== */
@@ -1949,9 +2134,9 @@ footer {
 
 /*Section Galerie*/
 
-        
-        .gallery-container {
-            position: relative;
+ /* Styles pour la galerie */
+.manual-gallery-container { /* CHANGÉ ICI */
+    position: relative;
             max-width: 800px; /* Largeur maximale de la galerie */
             width: 90%; /* Prend 90% de la largeur disponible */
             margin: 100px auto 20px auto; 
@@ -1962,133 +2147,125 @@ footer {
             display: flex; /* Utilise flexbox pour centrer le contenu */
             flex-direction: column;
             align-items: center;
-        }
+}
 
-        .gallery-header {
+.manual-gallery-header {
             width: 100%;
             padding: 15px 0;
             text-align: center;
             background-color: #333;
-            border-bottom: 1px solid #444;
-        }
-        .gallery-header h1 {
-            margin-top : 10px;
-            color: #fff;
-            font-size: 1.8em;
+            border-bottom: 1px solid #222;
         }
 
-        .gallery-slideshow {
-            display: flex;
-            overflow: hidden; /* Important pour le carrousel */
-            width: 100%;
-            position: relative; /* Pour positionner les flèches */
-        }
+.manual-gallery-header h1 { /* CHANGÉ ICI */
+    margin-top : 10px;
+    color: #fff;
+    font-size: 1.8em;       
+}
 
-        .gallery-slideshow img {
-            width: 100%;
-            height: auto;
-            max-height: 400px; /* Hauteur max pour les images */
-            object-fit: contain; /* L'image s'adapte sans être coupée, avec des bandes si nécessaire */
-            display: none; /* Toutes les images sont masquées par défaut */
-            animation: fadeIn 1s ease-in-out; /* Animation de fondu */
-        }
+/* Section de la galerie pour le diaporama manuel */
+.manual-gallery-section {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
 
-        .gallery-slideshow img.active {
-            display: block; /* Affiche l'image active */
-        }
+.manual-gallery-slideshow {
+   display: flex;
+   overflow: hidden;
+   width: 100%;
+   position: relative;
+   align-items: center; /* Permet de centrer verticalement les images si elles sont plus petites */
+   justify-content: center; /* Permet de centrer horizontalement les images */
+}
 
-        /* Flèches de navigation */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 10;
-        }
+.manual-gallery-slideshow img {
+   width: 100%;
+   height: auto; /* L'image prend 100% de la hauteur du conteneur fixe */
+   max-height: 400px; /* Conservez cette propriété pour ne pas dépasser 400px si l'image est plus grande */
+   object-fit: contain; /* Ou 'cover' selon l'effet désiré, comme discuté précédemment */
+   display: none;
+   animation: fadeIn 1s ease-in-out;
+}
 
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
+.manual-gallery-slideshow img.active {
+    display: block; /* Affiche l'image active */
+}
 
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
+/* Flèches Précédent/Suivant */
+.manual-prev, .manual-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    /* Supprimez ou ajustez si vous aviez un border-radius spécifique ici,
+       car les flèches individuelles gèrent maintenant leurs propres bords. */
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
 
-        /* Indicateurs (points) */
-        .dots-container {
-            text-align: center;
-            padding: 15px 0;
-            background-color: #333;
-            width: 100%;
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
+.manual-prev {
+    left: 0; /* AJOUTÉ ICI : Colle la flèche 'précédent' à l'extrémité gauche */
+    border-radius: 0 3px 3px 0;
+}
 
-        .dot.active, .dot:hover {
-            background-color: #717171;
-        }
+.manual-next {
+    right: 0; /* AJOUTÉ ICI : Colle la flèche 'suivant' à l'extrémité droite */
+    border-radius: 3px 0 0 3px;
+}
 
-        /* Bouton de retour */
-        .back-button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            text-decoration: none; /* Pour les liens */
-            display: inline-block; /* Pour que padding et margin fonctionnent bien */
-        }
-        .back-button:hover {
-            background-color: #0056b3;
-        }
+.manual-prev:hover, .manual-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
 
-        /* Animation de fondu pour les images */
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+/* Points indicateurs */
+.manual-dots-container {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #333;
+    width: 100%;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .gallery-slideshow img {
-                max-height: 400px;
-            }
-            .prev, .next {
-                font-size: 16px;
-                padding: 12px;
-                margin-top: -18px;
-            }
-        }
-        @media (max-width: 480px) {
-            .gallery-slideshow img {
-                max-height: 300px;
-            }
-            .prev, .next {
-                font-size: 14px;
-                padding: 10px;
-                margin-top: -16px;
-            }
-        }
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Bouton de retour */
+
+/* Animation de fondu pour les images */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@media (max-width: 768px) {
+    
+      .manual-gallery-slideshow img {
+        max-height: 400px;
+    }
+    .manual-prev, .manual-next {
+        font-size: 16px;
+        padding: 12px;
+        margin-top: -18px;
+    }
+}       
+        
 
 

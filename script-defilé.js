@@ -1,22 +1,24 @@
-// Fichier : script-carousel.js
+// Fichier : script-defilé.js (pour le diaporama manuel de la galerie)
 
 document.addEventListener('DOMContentLoaded', function() {
     let slideIndex = 0; // Indice de l'image actuellement affichée
-    const slides = document.querySelectorAll('.gallery-slideshow img'); // Toutes les images
-    const dotsContainer = document.querySelector('.dots-container'); // Conteneur des points
-    const prevButton = document.querySelector('.prev'); // Bouton précédent
-    const nextButton = document.querySelector('.next'); // Bouton suivant
+
+    // Utilisez les classes préfixées par 'manual-'
+    const slides = document.querySelectorAll('.manual-gallery-slideshow img');
+    const dotsContainer = document.querySelector('.manual-dots-container');
+    const prevButton = document.querySelector('.manual-prev');
+    const nextButton = document.querySelector('.manual-next');
 
     // Vérifie si les éléments existent avant d'initialiser le carrousel
     if (slides.length === 0 || !dotsContainer || !prevButton || !nextButton) {
-        console.warn("Éléments de carrousel introuvables. Le carrousel ne sera pas initialisé.");
+        console.warn("Éléments de carrousel manuel introuvables. Le carrousel ne sera pas initialisé.");
         return; // Sortir si les éléments nécessaires ne sont pas là
     }
 
     // Générer les points indicateurs
     for (let i = 0; i < slides.length; i++) {
         const dot = document.createElement('span');
-        dot.classList.add('dot');
+        dot.classList.add('dot'); // La classe 'dot' est générique pour le style
         dot.addEventListener('click', () => currentSlide(i));
         dotsContainer.appendChild(dot);
     }
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     prevButton.addEventListener('click', () => plusSlides(-1));
     nextButton.addEventListener('click', () => plusSlides(1));
 
-    // Afficher la première image au chargement
+    // Initialiser le diaporama en affichant la première image
     showSlides(slideIndex);
 });
+

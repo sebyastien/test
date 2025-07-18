@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ASSOA Karaté</title>
-    <link rel="stylesheet" href="projet2.css" />
+    <link rel="stylesheet" href="projet.css" />
 </head>
 <body>
 
@@ -20,7 +20,7 @@
          
         <nav class="nav-links"> <a href="index.html">Accueil</a>
             <div class="dropdown">
-                <a href="le-club.html" class="dropbtn">Le Club</a>
+                <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
                 <div class="dropdown-content">
                     <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
                     <a href="vaureal.html">Vauréal</a>
@@ -28,7 +28,13 @@
                     <a href="le-club.html">Voir tous les clubs</a>
                 </div>
             </div>
-            <a href="evenements.html">Evènements</a>
+            <div class="dropdown">
+            <a href="evenements.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Événements</a>
+            <div class="dropdown-content">
+                    <a href="evenements.html">Prochains Evènements</a>
+                    <a href="evenements-passes.html">Evènements passés</a>
+                </div>
+            </div>
             <a href="inscription.html">Inscription</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -43,7 +49,7 @@
         <section class="about-us">
             <h2>Notre Club : Plus Qu'un Simple Dojo</h2>
             <div class="about-content">
-                <img src="images/dojo.png" alt="Vue de l'intérieur du dojo ASSOA Karaté" class="about-image">
+                <img src="images/club/club.jpg" alt="Vue de l'intérieur du dojo ASSOA Karaté" class="about-image">
                 <div>
                     <p>Fondé sur les valeurs de respect, de discipline et de dépassement de soi, nos clubs offrent un environnement stimulant pour l'apprentissage et la pratique du Karaté traditionnel. Que vous soyez débutant ou pratiquant confirmé, jeune ou adulte, nos instructeurs qualifiés vous accompagneront dans votre progression.</p>
                     <p>Nous nous engageons à vous aider à développer votre force physique, votre agilité, mais aussi votre concentration, votre confiance en vous et votre maîtrise de soi. Rejoignez notre communauté passionnée et découvrez les nombreux bienfaits de cet art martial ancestral.</p>
@@ -51,36 +57,36 @@
                 </div>
             </div>
             <div class="center-cta">
-                 <a href="le-club.html" class="btn-cta">Inscrivez-vous dès maintenant !</a>
+                 <a href="inscription.html#inscription" class="btn-cta">Inscrivez-vous dès maintenant !</a>
             </div>
         </section>
 
         <section class="why-choose-us">
-            <h2>Pourquoi choisir notre club ?</h2>
+            <h2>Ce que nous proposons dans le club</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <img src="images/instit.png" alt="Icône instructeur qualifié">
+                    <img src="images/club/prof.jpg" alt="Icône instructeur qualifié">
                     <h3>Instructeurs Qualifiés</h3>
                     <p>Bénéficiez de l'enseignement de professeurs expérimentés et reconnus.</p>
                 </div>
                 <div class="benefit-item">
-                    <img src="images/acceuil.png" alt="Icône communauté">
+                    <img src="images/club/ccoupe.jpg" alt="Icône communauté">
                     <h3>Communauté Accueillante</h3>
                     <p>Entraînez-vous dans une ambiance conviviale et de soutien mutuel.</p>
                 </div>
                 <div class="benefit-item">
-                    <img src="images/entrainement.png" alt="Icône tous âges">
+                    <img src="images/master-enfant.jpg" alt="Icône tous âges">
                     <h3>Cours Adaptés à Tous</h3>
                     <p>Des programmes spécifiques pour enfants, adolescents et adultes.</p>
                 </div>
                 <div class="benefit-item">
-                    <img src="images/complet.png" alt="Icône discipline">
+                    <img src="images/club/master.jpg" alt="Icône discipline">
                     <h3>Développement Complet</h3>
                     <p>Améliorez votre corps et votre esprit par la discipline du karaté.</p>
                 </div>
             </div>
             <div class="center-cta">
-                 <a href="le-club.html" class="btn-cta secondary-cta">Découvrez nos Dojos et Horaires</a>
+                 <a href="le-club.html#horaires" class="btn-cta secondary-cta">Découvrez nos Dojos et Horaires</a>
             </div>
         </section>
 
@@ -91,7 +97,7 @@
                 <p><strong>Date :</strong> Samedi 24 Août 2025</p>
                 <p><strong>Lieu :</strong> Gymnase Roger Couderc, Saint-Ouen-l’Aumône</p>
                 <p>Un stage intensif pour affiner vos techniques et maîtriser de nouvelles katas. Ouvert à tous les licenciés.</p>
-                <a href="evenements.html" class="btn-link">Voir tous les événements</a>
+                <a href="evenements.html#event-future" class="btn-link">Voir tous les événements</a>
             </div>
         </section>
 
@@ -148,7 +154,7 @@
         </div>
     </footer>
 
-    <script src="script3.js"></script>
+    <script src="script-hamburger.js"></script>
     
 </body>
 </html>
