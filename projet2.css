@@ -9,8 +9,10 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
+html, body {
+    height: 100%; /* Important pour que le corps remplisse la hauteur */
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -20,6 +22,14 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffffff; /* C'est la couleur de votre espace blanc */
   color: #333;
+}
+
+main {
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
+}
+
+footer {
+    /* Styles normaux du footer */
 }
 
 a {
@@ -80,7 +90,31 @@ header {
   align-items: center;
   padding: 10px 30px;
   z-index: 1000;
-  box-shadow: 0 2px 5px #222(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Correction de la syntaxe rgba */
+}
+
+/* Règle pour le décalage de la cible de l'ancre */
+#inscription{
+    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
+       plus un petit espace supplémentaire si vous le souhaitez.
+       Testez différentes valeurs pour trouver celle qui convient le mieux. */
+    scroll-margin-top: 80px;
+}
+
+/* Règle pour le décalage de la cible de l'ancre */
+#horaires{
+    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
+       plus un petit espace supplémentaire si vous le souhaitez.
+       Testez différentes valeurs pour trouver celle qui convient le mieux. */
+    scroll-margin-top: 80px;
+}
+
+/* Règle pour le décalage de la cible de l'ancre */
+#event-future{
+    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
+       plus un petit espace supplémentaire si vous le souhaitez.
+       Testez différentes valeurs pour trouver celle qui convient le mieux. */
+    scroll-margin-top: 80px;
 }
 
 .logo {
@@ -120,6 +154,13 @@ nav a:hover {
     position: relative;
     display: inline-block;
 }
+
+.dropdown-content.show + .dropbtn::after { /* Note: le sélecteur d'adjacence générale '+' n'est pas idéal ici car dropbtn est AVANT dropdown-content */
+    /* Mieux est de cibler directement sur le dropbtn s'il a une classe "active" lors de l'ouverture */
+    /* Pour l'instant, si vous gérez la classe 'show' sur dropdown-content, la flèche ne tournera pas via ce sélecteur. */
+    /* Idéalement, ajoutez une classe 'active' à .dropbtn quand le dropdown est ouvert via JS, et utilisez .dropbtn.active::after */
+}
+
 
 .dropdown-content {
     display: none;
@@ -179,7 +220,14 @@ nav a:hover {
 }
 
 
-
+/* Styles pour les liens de navigation normaux (desktop) */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
 
 /* Styles pour le survol général des liens et dropbtn */
 .nav-links a:hover, .dropbtn:hover {
@@ -189,7 +237,30 @@ nav a:hover {
 
 /* Assurez-vous que le texte "Le Club" est bien blanc */
 .dropbtn {
+    background-color: transparent;
     color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* Assure que padding et positionnement fonctionnent */
+    text-decoration: none; /* Enlève le soulignement par défaut des liens */
+    position: relative; /* Pour positionner la flèche relative au bouton */
+    }
+
+.dropbtn::after {
+     content: '▼'; /* Caractère de flèche vers le bas */
+    position: absolute;
+    right: -5px; /* Ajuste la position de la flèche */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+/* Style de la flèche lorsque le menu est ouvert */
+.dropbtn.active::after {
+    transform: translateY(-50%) rotate(180deg); /* La flèche pointe vers le haut */
 }
 
 /* Média queries pour la responsivité (si votre hamburger est activé) */
@@ -208,16 +279,19 @@ nav a:hover {
     display: block; /* Affiche le bouton hamburger sur mobile */
   }
 
-  nav.nav-links { /* Utilise la nouvelle classe pour cibler la nav */
-    display: none; /* Cache la navigation par défaut sur mobile */
-    flex-direction: column;
-    width: 100%;
+  /* Navigation (menu mobile) */
+  nav.nav-links { /* Cible la navigation */
+    display: none; /* Cache le menu par défaut sur mobile */
+    flex-direction: column; /* Les éléments s'empilent verticalement */
+    justify-content: flex-start; /* Distribue l'espace également entre les éléments */
+    align-items: center; /* Centre les éléments horizontalement */
+    width: 100%; /* Prend toute la largeur de l'écran */
     position: fixed; /* Reste fixe par rapport au viewport */
-    top: 65px; /* Démarre juste en dessous du header (ajuste 75px si la hauteur de ton header change) */
+    top: 65px; /* Démarre juste en dessous du header */
     left: 0;
     background-color: #0b063b; /* Couleur de fond pour le menu déplié */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 20px 0;
+    padding: 0; /* Padding en haut et en bas du menu global */
     text-align: center;
     height: calc(100vh - 60px); /* Donne au menu la hauteur restante de l'écran */
     overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
@@ -231,25 +305,58 @@ nav a:hover {
     display: flex; /* Affiche la navigation quand la classe 'active' est présente */
   }
 
+  /* Styles des liens de navigation individuels */
   nav.nav-links a {
-    margin: 10px 0; /* Plus d'espace vertical pour les liens */
-    padding: 10px 0;
-    border-bottom: 1px solid #0b063b; /* Optionnel: séparation entre les liens */
+    color: white; /* Couleur du texte des liens */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    font-size: 1.25rem; /* Taille de police pour les liens */
+    font-weight: bold;
+    padding: 15px 0; /* Padding vertical pour chaque élément de menu */
+    width: 100%; /* Prend toute la largeur disponible pour le clic */
+    text-align: center; /* Centre le texte */
+    transition: color 0.3s ease;
+    border-bottom: none; /* Pas de bordure pour les liens individuels si space-around est utilisé */
+    margin: 0; /* AJOUTEZ/ASSUREZ-VOUS: Pas de marges supplémentaires sur les liens */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* AJOUTEZ CECI: Sépare visuellement les liens */
   }
 
-  nav.nav-links a:last-child {
-    border-bottom: none; /* Pas de bordure pour le dernier lien */
+  nav.nav-links a:hover {
+    color: #ffcc00; /* Couleur au survol */
   }
 
-  /* DROPDOWN STYLES FOR MOBILE */
+  /* Styles des Dropdowns pour mobile */
   .dropdown {
-    width: 100%; /* Le dropdown prend toute la largeur en mode mobile */
-    display: block; /* S'assure que le dropdown lui-même est un bloc */
+    width: 100%; /* Les dropdowns prennent toute la largeur */
+    text-align: center;
+     margin-bottom: 0; /* AJOUTEZ/ASSUREZ-VOUS: Pas de marge sous le dropdown */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* AJOUTEZ CECI: Sépare le dropdown du lien suivant */
   }
 
   .dropbtn {
-    width: 100%; /* Le bouton prend toute la largeur */
-    text-align: center;
+    width: 100%; /* Le bouton du dropdown prend toute la largeur */
+    text-align: center; /* Aligne le texte du bouton au centre */
+    padding: 15px 15px; /* Padding pour le bouton du dropdown - REDUIT considérablement */
+    color: white; /* Assurez-vous que le texte est blanc */
+    font-size: 1.25rem; /* Taille de police cohérente avec les autres liens */
+    font-weight: bold;
+    background-color: transparent; /* Fond transparent */
+    border: none; /* Pas de bordure */
+    cursor: pointer;
+    position: relative; /* Pour positionner la flèche */
+  }
+
+  .dropbtn::after {
+    content: '▼'; /* Caractère de flèche vers le bas */
+    position: absolute;
+    right: 20px; /* Ajuste la position de la flèche sur mobile, plus proche du bord */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+  }
+
+  .dropbtn.active::after {
+    transform: translateY(-50%) rotate(180deg); /* La flèche pointe vers le haut */
   }
 
   .dropdown-content {
@@ -266,9 +373,170 @@ nav a:hover {
   }
 
   .dropdown-content a {
-      color: white;
-      padding: 12px 20px;
-      text-align: center;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    display: block;
+    font-size: 1.1rem; /* Taille de police pour les sous-liens */
+    margin :0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* AJOUTEZ CECI: Sépare visuellement les sous-liens */
+  }
+
+  .dropdown-content a:last-child {
+      border-bottom: none;
+  }
+
+  /* Section Hero */
+  .hero {
+    min-height: 350px;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px; /* Ajuste pour mobile */
+  }
+  .hero p {
+    font-size: 1.2rem;
+    line-height: 1.5; /* Ajuste pour mobile */
+    margin-bottom: 30px; /* Ajuste pour mobile */
+  }
+  .hero .btn {
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  /* Section "À Propos" */
+  .about-content {
+    flex-direction: column; /* Empile l'image et le texte sur petits écrans */
+  }
+
+  .about-image {
+    width: 80%; /* L'image prend plus de place sur mobile */
+    margin-bottom: 20px; /* Espace sous l'image */
+  }
+
+  /* Section "Pourquoi nous choisir ?" */
+  .benefits-grid {
+    grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+  }
+
+  /* Cartes d'entraîneurs */
+  .trainer-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trainer-card {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  /* Tableau des horaires */
+  .club-schedule th,
+  .club-schedule td {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Formulaire de contact */
+  .contact-form-container {
+    padding: 20px;
+    margin: 40px 10px;
+  }
+
+  /* Pied de page */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+  }
+  .footer-column {
+    min-width: unset;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+  }
+  .footer-social {
+    order: 3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Galerie d'événements */
+
+  .event-card {
+    width: 90%; /* Les cartes prennent presque toute la largeur sur les petits écrans */
+    max-width: 350px; /* Limite la largeur maximale pour ne pas être trop grandes */
+  }
+
+
+
+  /* Galerie photo */
+  .manual-gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 petites colonnes sur mobile */
+    gap: 10px; /* Moins d'espace sur mobile */
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .manual-gallery-item {
+    height: 180px; /* Hauteur des miniatures sur mobile */
+  }
+}
+
+/* Styles pour les écrans encore plus petits (largeur maximale de 576px) */
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Styles pour les écrans encore plus petits (largeur maximale de 480px) */
+@media (max-width: 480px) {
+  /* Sections générales */
+  .club-presentation,
+  .club-details,
+  .club-values,
+  .club-trainers,
+  .club-schedule,
+  .club-location {
+    padding: 20px 15px;
+  }
+
+  /* Tableau des horaires */
+  .club-schedule th,
+  .club-schedule td {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Formulaire de contact */
+  .contact-form-container {
+    padding: 20px;
+    margin: 40px 10px;
+  }
+
+  /* Galerie d'événements */
+  .event-card {
+    padding: 15px;
+  }
+
+  .event-content h4 {
+    font-size: 1.3em;
+  }
+
+  .event-content p {
+    font-size: 0.9em;
+  }
+
+  /* Galerie photo */
+  .gallery-grid {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
   }
 }
 
@@ -528,6 +796,236 @@ nav a:hover {
   z-index: 1; /* Place le contenu AU-DESSUS de l'overlay et de la vidéo */
 }
 
+/* Styles pour le conteneur principal du diaporama */
+/* MODIFIEZ CETTE RÈGLE (ou ajoutez-la si elle n'existe pas pour .page-banner3) */
+/* Modifiez .page-banner3 pour avoir une min-height comme .page-banner */
+.page-banner3 {
+    width: 100%; /* J'ai changé 100% en 100vw pour s'assurer que ça prend bien toute la largeur du viewport */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+
+    min-height: 600px; /* Définit la hauteur minimale sur les grands écrans */
+    height: auto;      /* Permet à la hauteur de s'ajuster si le contenu dépasse */
+    margin-top: 60px; /* Pour éviter que la bannière ne soit sous le header */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 15px;
+}
+
+/* Le reste de votre CSS pour le diaporama et le texte */
+
+/* Le conteneur du diaporama doit occuper toute la place de la bannière */
+.page-banner3 .gallery-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Important : Prend 100% de la hauteur de .page-banner3 (y compris min-height) */
+    overflow: hidden;
+    z-index: 1; /* Assurez-vous d'avoir un z-index pour le positionnement */
+}
+
+.page-banner3 .gallery-slideshow img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0; /* Rend toutes les images transparentes par défaut */
+    transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
+    /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
+    /* min-height: 500px; */
+    /* min-width: none; */
+    /* display: none;  <-- Supprimez cette ligne */
+    /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
+}
+
+.page-banner3 .gallery-slideshow img.active {
+    /* display: block; */
+    opacity: 1;
+}
+
+/* L'overlay assombrissant */
+.page-banner3 .gallery-slideshow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+/* Texte (h1 et p) par-dessus la bannière */
+.page-banner3 h1,
+.page-banner3 p {
+    position: relative;
+    z-index: 3; /* Le texte doit être au-dessus de l'overlay (2) */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.page-banner3 h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.page-banner3 p {
+    font-size: 1.5em;
+}
+
+/* Les règles pour .banner-content ne sont pas appliquées si votre HTML n'utilise pas cette div.
+   Assurez-vous que votre HTML est toujours :
+   <section class="page-banner3">
+       <div class="gallery-slideshow"> ... </div>
+       <h1> ... </h1>
+       <p> ... </p>
+   </section>
+   Si vous avez ajouté <div class="banner-content">, alors il faudra ajuster les z-index et ciblages.
+   Pour l'instant, je suppose que vous n'avez PAS ajouté banner-content dans le HTML.
+*/
+.gallery-container {
+            position: relative;
+            max-width: 800px; /* Largeur maximale de la galerie */
+            width: 90%; /* Prend 90% de la largeur disponible */
+            margin: 100px auto 20px auto; 
+            background-color: #222; /* Fond pour la galerie elle-même */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex; /* Utilise flexbox pour centrer le contenu */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-header {
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: #333;
+            border-bottom: 1px solid #444;
+        }
+        .gallery-header h1 {
+            margin-top : 10px;
+            color: #fff;
+            font-size: 1.8em;
+        }
+
+        .gallery-slideshow {
+            display: flex;
+            overflow: hidden; /* Important pour le carrousel */
+            width: 100%;
+            position: relative; /* Pour positionner les flèches */
+        }
+
+        .gallery-slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+           object-position: center;
+           opacity: 0; /* Rend toutes les images transparentes par défaut */
+            transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
+            /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
+            /* min-height: 500px; */
+            /* min-width: none; */
+           /* display: none;  <-- Supprimez cette ligne */
+           /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
+        }
+
+        .gallery-slideshow img.active {
+           /* display: block; */
+    opacity: 1;
+        }
+
+        
+
+        /* Animation de fondu pour les images */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-slideshow img {
+                max-height: auto;
+            }
+            .prev, .next {
+                font-size: 16px;
+                padding: 12px;
+                margin-top: -18px;
+            }
+        }
+        @media (max-width: 480px) {
+            
+            .prev, .next {
+                font-size: 14px;
+                padding: 10px;
+                margin-top: -16px;
+            }
+            .gallery-slideshow img {
+                max-height: auto;
+            }
+        }
+
+@media (max-width: 768px) {
+  .page-banner3 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner3 h1 {
+    font-size: 2em;
+  }
+  .page-banner3 p {
+    font-size: 1.2em;
+  }
+
+  .page-banner {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner h1 {
+    font-size: 2em;
+  }
+  .page-banner p {
+    font-size: 1.2em;
+  }
+
+  .page-banner1 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner1 h1 {
+    font-size: 2em;
+  }
+  .page-banner1 p {
+    font-size: 1.2em;
+  }
+
+  .page-banner2 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner2 h1 {
+    font-size: 2em;
+  }
+  .page-banner2 p {
+    font-size: 1.2em;
+  }
+  /* ... le reste de vos règles média ... */
+}
+
+
+
 
 /* ===================================== */
 /* 5. Buttons & Forms                    */
@@ -564,9 +1062,9 @@ nav a:hover {
 /* 6.1. General Section Styles */
 .club-presentation {
   background-color: white;
-  border-left: 0px solid #0b063b;
-  margin-top: 10px; /* Ajoute un espace de 10px au-dessus de la section */
-}
+  padding: 40px 0%;
+  text-align: center;
+  width: 100%;}
 
 .club-details,
 .club-values,
@@ -575,6 +1073,7 @@ nav a:hover {
 
 /* Styles pour la section des horaires sur la page Le Club */
 .club-schedule p {
+  font-size: 1.1em;
   /* Ceci peut servir pour tous les paragraphes dans club-schedule, ajustez si besoin */
   margin-bottom: 20px; /* Ajoute un espace sous le paragraphe introductif */
 }
@@ -619,32 +1118,42 @@ nav a:hover {
 }
 
 .club-location {
+  font-size: 1.1em;
   margin-bottom: 00px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px #0b063b(0, 0, 0, 0.1);
   text-align: justify;
   background-color: #ffffff;
   padding: 20px 0%;
   width: 100%;
 }
 
-.club-presentation {
-  background-color: white;
-  border-left: 0px solid #0b063b;
-}
+
 
 
 /* 6.2. Section Titles */
 .club-presentation h1
 {
   text-align: center;
+  margin-bottom: 30px;
   font-size: 3em;
-  color: black;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding-top: 35px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #0b063b;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+.club-presentation h1::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .club-details h2,
 .club-values h2,
@@ -657,12 +1166,32 @@ nav a:hover {
   color: #0056b3;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #0b063b;
+  
   width: 100%;
+  position: relative;
+}
+
+.club-details h2::after,
+.club-trainers h2::after,
+.club-schedule h2::after,
+.club-location h2::after,
+.club-values h2::after
+{
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* 6.3. Subtitles */
-.club-presentation h3,
+.club-presentation p{
+  font-size: 1.1em;
+}
 .details-section h3 {
   font-size: 1.8em;
   color: #0056b3;
@@ -670,6 +1199,15 @@ nav a:hover {
   margin-bottom: 15px;
   border-bottom: 1px dotted #0b063b;
   padding-bottom: 5px;
+}
+
+.details-section ul{
+  padding: 5px 5px;
+  font-size: 0.9em;
+}
+
+.details-section{
+  font-size: 1.1em;
 }
 
 /* 6.4. Paragraphs and Lists */
@@ -804,22 +1342,36 @@ nav a:hover {
 /* ===================================== */
 .contact-section {
   background-color: #ffffff;
-  padding: 20px 0%;
+  padding: 0px 0%;
   width: 100%;
 }
 
-.contact-section h2 {
-  
+.contact-section h2 { 
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
   
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */  
+}
+.contact-section h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contact-header p{
+  font-size: 1.1em;
 }
 
 .contact-grid {
@@ -859,6 +1411,24 @@ nav a:hover {
 .contact-column a:hover {
   color: #ffcc00;
   text-decoration: underline;
+}
+
+@media(max-width: 768px) {
+  
+.contact-section h2{
+    font-size: 2em;
+  }
+  .contact-section h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 }
 
 /* ===================================== */
@@ -918,7 +1488,7 @@ nav a:hover {
 .form-group textarea:focus {
   border-color: #0b063b;
   outline: none;
-  box-shadow: 0 0 5px #0b063b(255, 204, 0, 0.5);
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
 }
 
 .form-group textarea {
@@ -987,13 +1557,26 @@ nav a:hover {
 
 .partenaires h2 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 50px;
-    margin-bottom: 10px;
-    /* Vous avez deux 'border-bottom' ici, je conserve le dernier qui est appliqué */
-    border-bottom: 2px solid #0b063b;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.partenaires h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .partenaires-logos {
@@ -1015,23 +1598,56 @@ nav a:hover {
     transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+.partenaires h2{
+    font-size: 2em;
+  }
+  .partenaires h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
 /* --- Styles pour la nouvelle section "À Propos" (.about-us) --- */
 .about-us {
-    background-color:white; /* Fond plus clair */
-;
-    padding: 40px 0;
-    margin-bottom: 10px;
+    background-color:white; /* Fond plus clair */;
+    padding: 0px 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px #0b063b(0, 0, 0, 0.05);
     text-align: center; /* Centre le titre */
 }
 
 .about-us h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #0b063b;
+  text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
 }
+
+.about-us h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 .about-content {
     display: flex; /* Utilise Flexbox pour aligner image et texte */
@@ -1041,15 +1657,50 @@ nav a:hover {
 }
 
 .about-image {
-    width: 40%; /* Largeur de l'image */
-    max-width: 300px; /* Largeur maximale pour les écrans larges */
-    height: auto;
+    width: 60%; /* Largeur de l'image */
+    max-width: 700px; /* Largeur maximale pour les écrans larges */
+    height: auto; /* La hauteur s'ajuste pour maintenir les proportions */
     border-radius: 8px;
     box-shadow: 0 4px 8px #0b063b(0, 0, 0, 0.1);
 }
 
 .about-content div {
     flex: 1; /* Le texte prend l'espace restant */
+}
+
+@media (max-width: 768px) {
+.about-us h2{
+    font-size: 2em;
+  }
+  .about-us h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
+.btn-gauche {
+  display: inline-block;
+  background-color: #0b063b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+  border: 2px solid #0b063b; /* Bordure du bouton */
+}
+
+.btn-gauche:hover {
+  background-color: white;
+  color: #0b063b;
 }
 
 /* Styles pour les boutons d'appel à l'action */
@@ -1081,6 +1732,7 @@ nav a:hover {
     color: #0b063b;
 }
 
+
 .cta-text {
     font-size: 1.1em;
     font-style: italic;
@@ -1098,16 +1750,76 @@ nav a:hover {
 }
 
 .why-choose-us h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #0b063b;
+    text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.why-choose-us h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .why-choose-us h2{
+    font-size: 2em;
+    max-width: 95%;
+  }
+  .why-choose-us h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+   .main-content h2:not(.why-choose-us h2) {
+        max-width: 95%; /* Limite la largeur du titre à 95% du conteneur */
+        margin-left: auto; /* Centre le titre horizontalement */
+        margin-right: auto; /* Centre le titre horizontalement */
+        /* Ajoutez un padding horizontal pour éviter que le texte ne touche les bords sur de très petits écrans */
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur totale */
+    }
+
+    /* OU, si vous voulez cibler spécifiquement les h2 dans la section "about-us" et "upcoming-events" et "partenaires" */
+    .why-choose-us h2,
+    .about-us h2,
+    .upcoming-events h2,
+    .partenaires h2 {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+
 }
 
 .benefits-grid {
-    display: grid; /* Utilise CSS Grid pour un agencement en grille */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 250px minimum, ou autant de colonnes que possible */
-    gap: 30px; /* Espacement entre les éléments de la grille */
+    display: grid;
+    /* Augmentez la valeur 'minmax' pour des cadres plus grands. */
+    /* Par exemple, de 250px à 300px ou 350px. */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Cadres plus grands */
+    gap: 30px;
 }
 
 .benefit-item {
@@ -1123,8 +1835,9 @@ nav a:hover {
 }
 
 .benefit-item img {
+   max-width : 100%;
     width: auto; /* Taille des icônes */
-    height: 300px;
+    height: 200px;
     margin-bottom: 15px;
 }
 
@@ -1166,10 +1879,44 @@ nav a:hover {
 }
 
 .upcoming-events h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #0b063b;
+   text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.upcoming-events h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media(max-width: 768px){
+  .upcoming-events h2{
+    font-size: 2em;
+  }
+  .upcoming-events h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 }
 
 .event-preview {
@@ -1256,27 +2003,55 @@ nav a:hover {
   text-align: center;
   margin-bottom: 30px;
   font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+.inscription-section h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .inscription-section h3 {
-    font-size: 1.8em;
-    color: #0b063b; /* Ou une autre couleur de votre palette */
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+    text-align: center;
+  font-size: 1.8em;
+  color: #0b063b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */ 
+}
+
+.inscription-section h3::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+.inscription-section p{
+  font-size: 1.1em;
 }
 
 .intro-text {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #444;
 }
 
@@ -1287,6 +2062,46 @@ nav a:hover {
   gap: 15px;
   margin: 30px 0;
 }
+
+
+ @media(max-width: 768px){
+  .inscription-section h3{
+    font-size: 1.5em;
+  }
+
+  .inscription-section h3::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+  }
+
+  .inscription-section h2{
+  font-size: 2em;
+  text-align: center;
+  }
+
+  .inscription-section h2::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+  }
+}
+
+
 
 .btn-download {
   display: inline-block;
@@ -1314,6 +2129,11 @@ nav a:hover {
   color: #0b063b;
   text-decoration: underline;
 }
+
+.email-text p{
+  font-size: 1.1em;
+}
+
 
 
 /* ===================================== */
@@ -1459,12 +2279,26 @@ footer {
 
 /* Responsive Club */
 @media (max-width: 768px) {
+  .main-content section,
+  .main-content h1,
+  .main-content h2,
+  .main-content p,
+  .main-content .btn-cta,
+  .main-content .btn-link {
+    text-align: center;
+  }
   .club-section .club-container {
     flex-direction: column;
   }
   .club-section .club-image,
   .club-section .club-text {
     width: 100%;
+  }
+
+  .club-presentation,
+  .club-schedule,
+  .club-location{
+    text-align: center;
   }
 
   .club-presentation h1,
@@ -1474,11 +2308,31 @@ footer {
   .club-schedule h2,
   .club-location h2 {
     font-size: 2em;
+    text-align: center;
+  }
+
+  .club-presentation h1::after,
+  .club-details h2::after,
+  .club-values h2::after,
+  .club-trainers h2::after,
+  .club-schedule h2::after,
+  .club-location h2::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
   }
 
   .club-presentation h3,
   .details-section h3 {
     font-size: 1.5em;
+    text-align: center;
   }
 
   .trainer-cards {
@@ -1493,15 +2347,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .club-presentation,
-  .club-details,
-  .club-values,
-  .club-trainers,
-  .club-schedule,
-  .club-location {
-    padding: 20px 15px;
-  }
-
   .club-schedule th,
   .club-schedule td {
     padding: 8px 10px;
@@ -1579,28 +2424,42 @@ footer {
   justify-content: center;
   align-items: stretch; /* MODIFIÉ : pour que les cartes aient la même hauteur */
   gap: 30px;
-  margin-top: 30px;
-  margin-bottom: 50px;
   /* Assurez-vous que ces propriétés sont ABSENTES si elles étaient là avant : */
   /* flex-wrap: wrap; */
   /* overflow-x: auto; */
   /* white-space: nowrap; */
   /* scrollbar-width, scrollbar-color, ::-webkit-scrollbar... */
   background-color: #ffffff;
-  padding: 20px 0%;
+  padding: 40px 0%;
   width: 100%;
 }
 
 /* Titre de la section des événements */
 .events-list h3 {
   width: 100%; /* Prend toute la largeur pour centrer le titre */
-  text-align: center;
-  margin-bottom: 20px; /* Espacement après le titre */
-  font-size: 3em; /* Taille du titre */
-  color: black; /* Couleur de titre, similaire à vos liens de navigation */
-  border-bottom: 2px solid #0b063b; /* Ligne de séparation */
-  padding-bottom: 5px;
+ text-align: center;
+  margin-bottom: 30px;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
 }
+
+.events-list h3::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 /* Style de chaque carte d'événement */
 .event-card {
@@ -1703,16 +2562,28 @@ footer {
   }
 
   .events-list {
-    padding: 20px 10px;
+    text-align: center;
   }
+  .events-list h3{
+    font-size: 2em;
+    text-align: center;
+  }
+   .events-list h3::after{
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+   }
 
   .event-card {
     width: 90%; /* Les cartes prennent presque toute la largeur sur les petits écrans */
     max-width: 350px; /* Limite la largeur maximale pour ne pas être trop grandes */
-  }
-
-  .events-list h3 {
-    font-size: 2em;
   }
 }
 
@@ -1734,6 +2605,93 @@ footer {
     font-size: 0.9em;
   }
 }
+
+/* Styles pour la nouvelle section de galerie */
+.photo-gallery {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.photo-gallery h3 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.2em;
+}
+
+.gallery-grid {
+    display: grid; /* Utilise CSS Grid pour une mise en page flexible */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes sur grand écran, s'adapte sur petit */
+    gap: 20px; /* Espace entre les images */
+    max-width: 1200px;
+    margin: 0 auto; /* Centre la grille */
+}
+
+.gallery-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Pour que les coins arrondis s'appliquent à l'image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Petit effet au survol */
+}
+
+.gallery-item img {
+    width: 100%; /* L'image prend toute la largeur de son conteneur */
+    height: 200px; /* Hauteur fixe pour uniformiser */
+    object-fit: cover; /* Recadre l'image pour couvrir l'espace sans la déformer */
+    display: block; /* Supprime l'espace sous l'image */
+}
+
+.gallery-item p {
+    padding: 15px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Styles Responsifs pour la galerie */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 colonnes sur tablette */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    }
+}
+
+/* ... (Tes styles CSS existants pour .photo-gallery, .gallery-grid, .gallery-item, etc.) ... */
+
+/* Nouvelle règle CSS pour masquer les éléments */
+.hidden {
+    display: none !important; /* Important pour s'assurer que ça prend le dessus */
+}
+
+/* Styles pour le bouton d'affichage/masquage */
+.toggle-gallery-button {
+    background-color: #007BFF; /* Couleur bleue, tu peux changer */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    margin-bottom: 30px; /* Espace en dessous du bouton */
+    transition: background-color 0.3s ease;
+}
+
+.toggle-gallery-button:hover {
+    background-color: #0056b3;
+}
+
 
 
 /* ===================================== */
@@ -1783,6 +2741,457 @@ footer {
     transform: translateY(15px); /* Décale visuellement le message de 15px vers le bas lorsqu'il est affiché */
 }
 
+/*Section Galerie*/
 
 
+.manual-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 petites colonnes sur mobile */
+    gap: 10px; /* Moins d'espace sur mobile */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.manual-gallery-item {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    height: 180px; /* Hauteur des miniatures sur mobile */
+    /* Assurez-vous que les classes spécifiques ne perturbent pas le mobile */
+    grid-column: span 1; /* Chaque item prend 1 colonne */
+    grid-row: span 1;    /* Chaque item prend 1 rangée */
+}
+
+.manual-gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.manual-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ------------------------------------------------------------- */
+/* MEDIA QUERY pour ÉCRANS PC (minimum 1024px ou 1200px) */
+
+/* ... (Vos styles pour mobile et styles généraux au-dessus) ... */
+
+/* ------------------------------------------------------------- */
+/* MEDIA QUERY pour ÉCRANS PC (minimum 1024px) */
+
+@media (min-width: 1024px) {
+    .manual-gallery-container {
+        display: grid;
+        /* La grille de base semble être 5 colonnes */
+        grid-template-columns: repeat(4, 1fr);
+        /* Définir une hauteur de base pour les rangées. Ajustez si les images sont trop étirées/compressées. */
+        grid-auto-rows: minmax(200px, auto); /* Hauteur de ligne par défaut */
+        gap: 10px; /* Espacement entre les images */
+        max-width: 1200px; /* Largeur maximale de la galerie */
+        margin: 0 auto;
+        padding: 10px;
+        /* grid-auto-flow: dense;  -- On peut l'utiliser si des espaces persistent,
+                                   mais essayons un placement plus explicite d'abord. */
+    }
+
+    .manual-gallery-item {
+        height: auto; /* La hauteur est gérée par grid-auto-rows et grid-row-end */
+        /* Par défaut, chaque item prend 1 colonne et 1 rangée */
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* --- Placement des images spécifiques selon votre schéma --- */
+
+    /* Image 1 (La grande image en haut à gauche) */
+    .manual-gallery-item-1 { /* Assurez-vous que c'est bien la 1ère image dans votre HTML */
+        grid-column: span 2; /* Prend 3 colonnes */
+        grid-row: span 2;    /* Prend 2 rangées */
+    }
+
+    /* Image 2 (Petite, à droite de la grande image, haut-centre) */
+    .manual-gallery-item-2 { /* Assurez-vous que c'est la 2ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (4) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 3 / span 1;  /* Si vous voulez être explicite sur la colonne de départ */
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 3 (Petite, à droite de la 2, haut-droite) */
+    .manual-gallery-item-3 { /* Assurez-vous que c'est la 3ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (5) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 4 / span 1; 
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 4 (Image large qui s'étend sur toute la largeur, sous l'image 1 et potentiellement d'autres) */
+    .manual-gallery-item-4 { /* Assurez-vous que c'est la 4ème image dans votre HTML */
+        grid-column: span 2; /* Prend 5 colonnes (toute la largeur de la grille) */
+         grid-row: span 1;  /* Pour la forcer à commencer à la 3ème rangée si elle ne se place pas naturellement */
+    }
+
+    /* Image 5 (Grande image en bas à gauche, sous l'image large) */
+    .manual-gallery-item-5 { /* Assurez-vous que c'est la 5ème image dans votre HTML */
+        grid-column: span 1; /* Prend 2 colonnes */
+        grid-row: span 1;    /* Prend 2 rangées (pour descendre un peu) */
+        /* Vous devrez peut-être ajuster la grid-row de départ si elle ne se place pas juste en dessous de .gallery-item-4 */
+        /* grid-row-start: 4; */ /* Par exemple, si l'image 4 est sur la rangée 3, celle-ci commencerait sur la rangée 4 */
+    }
+
+    /* Image 6 (À droite de l'image 5) */
+    .manual-gallery-item-6 { /* Assurez-vous que c'est la 6ème image */
+        grid-column: span 1; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 7 (À droite de l'image 6) */
+    .manual-gallery-item-7 { /* Assurez-vous que c'est la 7ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 8 (À droite de l'image 7, ou sous l'image 6/7 si l'espace le permet) */
+    .manual-gallery-item-8 { /* Assurez-vous que c'est la 8ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    .manual-gallery-item-9 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-10 {
+        grid-column: span 1;
+        grid-row: span 3;
+    } 
+
+    .manual-gallery-item-11 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-12 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-13 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-14 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-15 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-16 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-17 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-18 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-19 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-20 {
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+    .manual-gallery-item-21 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-22 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-23 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-24 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-25 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-26 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-27 {
+        grid-column: span 1;
+        grid-row: span 3;
+    }
+    .manual-gallery-item-28 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-29 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-30 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-31 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-32 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-33 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-34 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-35 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .manual-gallery-item-36 { /* Assurez-vous que c'est bien la 1ère image dans votre HTML */
+        grid-column: span 2; /* Prend 3 colonnes */
+        grid-row: span 2;    /* Prend 2 rangées */
+    }
+
+    /* Image 2 (Petite, à droite de la grande image, haut-centre) */
+    .manual-gallery-item-37 { /* Assurez-vous que c'est la 2ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (4) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 3 / span 1;  /* Si vous voulez être explicite sur la colonne de départ */
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 3 (Petite, à droite de la 2, haut-droite) */
+    .manual-gallery-item-38 { /* Assurez-vous que c'est la 3ème image dans votre HTML */
+        /* Commence automatiquement à la colonne suivante (5) et prend 1 colonne, 1 rangée (par défaut) */
+        grid-column: 4 / span 1; 
+        grid-row: 1 / span 1; 
+    }
+
+    /* Image 4 (Image large qui s'étend sur toute la largeur, sous l'image 1 et potentiellement d'autres) */
+    .manual-gallery-item-39 { /* Assurez-vous que c'est la 4ème image dans votre HTML */
+        grid-column: span 2; /* Prend 5 colonnes (toute la largeur de la grille) */
+         grid-row: span 1;  /* Pour la forcer à commencer à la 3ème rangée si elle ne se place pas naturellement */
+    }
+
+    /* Image 5 (Grande image en bas à gauche, sous l'image large) */
+    .manual-gallery-item-40 { /* Assurez-vous que c'est la 5ème image dans votre HTML */
+        grid-column: span 1; /* Prend 2 colonnes */
+        grid-row: span 1;    /* Prend 2 rangées (pour descendre un peu) */
+        /* Vous devrez peut-être ajuster la grid-row de départ si elle ne se place pas juste en dessous de .gallery-item-4 */
+        /* grid-row-start: 4; */ /* Par exemple, si l'image 4 est sur la rangée 3, celle-ci commencerait sur la rangée 4 */
+    }
+
+    /* Image 6 (À droite de l'image 5) */
+    .manual-gallery-item-41 { /* Assurez-vous que c'est la 6ème image */
+        grid-column: span 1; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 7 (À droite de l'image 6) */
+    .manual-gallery-item-42 { /* Assurez-vous que c'est la 7ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    /* Image 8 (À droite de l'image 7, ou sous l'image 6/7 si l'espace le permet) */
+    .manual-gallery-item-43 { /* Assurez-vous que c'est la 8ème image */
+        grid-column: span 2; /* Prend 1 colonne */
+        grid-row: span 1;    /* Prend 1 rangée */
+    }
+
+    .manual-gallery-item-44 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .manual-gallery-item-45 {
+        grid-column: span 1;
+        grid-row: span 3;
+    } 
+    
+
+    /* IMPORTANT : Pour les images qui NE SONT PAS des grandes images et qui doivent remplir les trous,
+       vous pouvez compter sur l'auto-placement si vous utilisez grid-auto-flow: dense;
+       ou vous devrez leur donner des grid-column / grid-row explicites si l'auto-placement
+       ne fonctionne pas comme vous le souhaitez. */
+
+    /* Ajustements des boutons de la lightbox sur PC */
+    .close-button, .prev-button, .next-button {
+        font-size: 50px;
+    }
+}
+
+/* ... (Le reste de votre CSS pour la lightbox) ... */
+
+
+
+/* ------------------------------------------------------------- */
+/* Styles de la Lightbox (pas de changement ici) */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px; /* Taille par défaut, sera surchargée par PC media query */
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px; /* Taille par défaut, sera surchargée par PC media query */
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    transform: translateY(-50%);
+}
+
+.prev-button {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next-button {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0,0,0,0.8);
+}      
+
+
+
+.manual-gallery-titre h1{
+  font-size: 3em;
+  color: #0b063b;
+  padding: 90px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.manual-gallery-titre h1::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .manual-gallery-titre h1{
+    font-size: 2em;
+  }
+  .manual-gallery-titre h1::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
+
+/* Style du bouton "Retour en haut"*/
+#scrollToTopBtn {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    /* Utilisation de vmin pour un meilleur comportement au zoom */
+    bottom: 2.5vmin;
+    right: 2.5vmin;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #0b063b; /* Un rouge vif, comme une ceinture ou un logo */
+    color: white; /* Flèche blanche */
+    cursor: pointer;
+    /* Utilisation de vmin pour le padding et la taille de police */
+    padding: 1.5vmin 2vmin;
+    border-radius: 5px; /* Angles légèrement moins arrondis */
+    font-size: 2vmin;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* Ombre plus prononcée */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Légère ombre sur le texte */
+}
+
+#scrollToTopBtn:hover {
+    background-color: #0b063b; /* Rouge plus foncé au survol */
+    transform: scale(1.05); /* Léger agrandissement (cet effet reste le même) */
+}
 

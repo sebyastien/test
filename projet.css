@@ -9,8 +9,10 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
+html, body {
+    height: 100%; /* Important pour que le corps remplisse la hauteur */
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -20,6 +22,14 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffffff; /* C'est la couleur de votre espace blanc */
   color: #333;
+}
+
+main {
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
+}
+
+footer {
+    /* Styles normaux du footer */
 }
 
 a {
@@ -80,7 +90,7 @@ header {
   align-items: center;
   padding: 10px 30px;
   z-index: 1000;
-  box-shadow: 0 2px 5px #222(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Correction de la syntaxe rgba */
 }
 
 /* Règle pour le décalage de la cible de l'ancre */
@@ -101,6 +111,13 @@ header {
 
 /* Règle pour le décalage de la cible de l'ancre */
 #event-future{
+    /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
+       plus un petit espace supplémentaire si vous le souhaitez.
+       Testez différentes valeurs pour trouver celle qui convient le mieux. */
+    scroll-margin-top: 80px;
+}
+
+#event-past{
     /* Ajustez cette valeur (par exemple 100px) pour correspondre à la hauteur de votre header,
        plus un petit espace supplémentaire si vous le souhaitez.
        Testez différentes valeurs pour trouver celle qui convient le mieux. */
@@ -269,16 +286,19 @@ nav a:hover {
     display: block; /* Affiche le bouton hamburger sur mobile */
   }
 
-  nav.nav-links { /* Utilise la nouvelle classe pour cibler la nav */
-    display: none; /* Cache la navigation par défaut sur mobile */
-    flex-direction: column;
-    width: 100%;
+  /* Navigation (menu mobile) */
+  nav.nav-links { /* Cible la navigation */
+    display: none; /* Cache le menu par défaut sur mobile */
+    flex-direction: column; /* Les éléments s'empilent verticalement */
+    justify-content: flex-start; /* Distribue l'espace également entre les éléments */
+    align-items: center; /* Centre les éléments horizontalement */
+    width: 100%; /* Prend toute la largeur de l'écran */
     position: fixed; /* Reste fixe par rapport au viewport */
-    top: 65px; /* Démarre juste en dessous du header (ajuste 75px si la hauteur de ton header change) */
+    top: 65px; /* Démarre juste en dessous du header */
     left: 0;
     background-color: #0b063b; /* Couleur de fond pour le menu déplié */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 20px 0;
+    padding: 0; /* Padding en haut et en bas du menu global */
     text-align: center;
     height: calc(100vh - 60px); /* Donne au menu la hauteur restante de l'écran */
     overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
@@ -292,38 +312,59 @@ nav a:hover {
     display: flex; /* Affiche la navigation quand la classe 'active' est présente */
   }
 
+  /* Styles des liens de navigation individuels */
   nav.nav-links a {
-    margin: auto 0; /* Plus d'espace vertical pour les liens */
-    padding: auto 0;
-    border-bottom: 1px solid #0b063b; /* Optionnel: séparation entre les liens */
+    color: white; /* Couleur du texte des liens */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    font-size: 1.25rem; /* Taille de police pour les liens */
+    font-weight: bold;
+    padding: 15px 0; /* Padding vertical pour chaque élément de menu */
+    width: 100%; /* Prend toute la largeur disponible pour le clic */
+    text-align: center; /* Centre le texte */
+    transition: color 0.3s ease;
+    border-bottom: none; /* Pas de bordure pour les liens individuels si space-around est utilisé */
+    margin: 0; /* AJOUTEZ/ASSUREZ-VOUS: Pas de marges supplémentaires sur les liens */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* AJOUTEZ CECI: Sépare visuellement les liens */
   }
 
-  nav.nav-links a:last-child {
-    border-bottom: none; /* Pas de bordure pour le dernier lien */
+  nav.nav-links a:hover {
+    color: #ffcc00; /* Couleur au survol */
   }
 
-  /* DROPDOWN STYLES FOR MOBILE */
+  /* Styles des Dropdowns pour mobile */
   .dropdown {
-    width: 100%; /* Les liens et dropdowns prennent toute la largeur */
-        text-align: center; /* Alignement du texte à gauche */
-        padding: 0; /* Réinitialise le padding global des liens */
-        margin-bottom: 5px; /* Ajoute de l'espace entre les éléments de navigation */
+    width: 100%; /* Les dropdowns prennent toute la largeur */
+    text-align: center;
+     margin-bottom: 0; /* AJOUTEZ/ASSUREZ-VOUS: Pas de marge sous le dropdown */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* AJOUTEZ CECI: Sépare le dropdown du lien suivant */
   }
 
   .dropbtn {
-       width: 100%; /* Le bouton du dropdown prend toute la largeur */
-        text-align: center; /* Aligne le texte du bouton à gauche */
-        padding: 150px 15px; /* Padding pour le bouton du dropdown */
-        padding-right: 0px; /* Garde l'espace pour la flèche */
-        /* Ajout de marge en bas pour espacer les dropdowns */
-        margin-bottom: 5px; /* Ajoutez cette ligne */
-    }
+    width: 100%; /* Le bouton du dropdown prend toute la largeur */
+    text-align: center; /* Aligne le texte du bouton au centre */
+    padding: 15px 15px; /* Padding pour le bouton du dropdown - REDUIT considérablement */
+    color: white; /* Assurez-vous que le texte est blanc */
+    font-size: 1.25rem; /* Taille de police cohérente avec les autres liens */
+    font-weight: bold;
+    background-color: transparent; /* Fond transparent */
+    border: none; /* Pas de bordure */
+    cursor: pointer;
+    position: relative; /* Pour positionner la flèche */
+  }
 
-    .dropbtn::after {
-        left: 125px; /* Ajuste la position de la flèche sur mobile */
-        top: 50%;
-        transform: translateY(-50%);
-    }
+  .dropbtn::after {
+    content: '▼'; /* Caractère de flèche vers le bas */
+    position: absolute;
+    right: 20px; /* Ajuste la position de la flèche sur mobile, plus proche du bord */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+  }
+
+  .dropbtn.active::after {
+    transform: translateY(-50%) rotate(180deg); /* La flèche pointe vers le haut */
+  }
 
   .dropdown-content {
     position: static; /* Important pour que le sous-menu s'intègre au flux mobile */
@@ -339,10 +380,170 @@ nav a:hover {
   }
 
   .dropdown-content a {
-      color: white;
-      padding: 12px 20px;
-      text-align: center;
-      display: block;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    display: block;
+    font-size: 1.1rem; /* Taille de police pour les sous-liens */
+    margin :0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* AJOUTEZ CECI: Sépare visuellement les sous-liens */
+  }
+
+  .dropdown-content a:last-child {
+      border-bottom: none;
+  }
+
+  /* Section Hero */
+  .hero {
+    min-height: 350px;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px; /* Ajuste pour mobile */
+  }
+  .hero p {
+    font-size: 1.2rem;
+    line-height: 1.5; /* Ajuste pour mobile */
+    margin-bottom: 30px; /* Ajuste pour mobile */
+  }
+  .hero .btn {
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  /* Section "À Propos" */
+  .about-content {
+    flex-direction: column; /* Empile l'image et le texte sur petits écrans */
+  }
+
+  .about-image {
+    width: 80%; /* L'image prend plus de place sur mobile */
+    margin-bottom: 20px; /* Espace sous l'image */
+  }
+
+  /* Section "Pourquoi nous choisir ?" */
+  .benefits-grid {
+    grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+  }
+
+  /* Cartes d'entraîneurs */
+  .trainer-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trainer-card {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  /* Tableau des horaires */
+  .club-schedule th,
+  .club-schedule td {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Formulaire de contact */
+  .contact-form-container {
+    padding: 20px;
+    margin: 40px 10px;
+  }
+
+  /* Pied de page */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+  }
+  .footer-column {
+    min-width: unset;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+  }
+  .footer-social {
+    order: 3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Galerie d'événements */
+
+  .event-card {
+    width: 90%; /* Les cartes prennent presque toute la largeur sur les petits écrans */
+    max-width: 350px; /* Limite la largeur maximale pour ne pas être trop grandes */
+  }
+
+
+
+  /* Galerie photo */
+  .manual-gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 petites colonnes sur mobile */
+    gap: 10px; /* Moins d'espace sur mobile */
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .manual-gallery-item {
+    height: 180px; /* Hauteur des miniatures sur mobile */
+  }
+}
+
+/* Styles pour les écrans encore plus petits (largeur maximale de 576px) */
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Styles pour les écrans encore plus petits (largeur maximale de 480px) */
+@media (max-width: 480px) {
+  /* Sections générales */
+  .club-presentation,
+  .club-details,
+  .club-values,
+  .club-trainers,
+  .club-schedule,
+  .club-location {
+    padding: 20px 15px;
+  }
+
+  /* Tableau des horaires */
+  .club-schedule th,
+  .club-schedule td {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Formulaire de contact */
+  .contact-form-container {
+    padding: 20px;
+    margin: 40px 10px;
+  }
+
+  /* Galerie d'événements */
+  .event-card {
+    padding: 15px;
+  }
+
+  .event-content h4 {
+    font-size: 1.3em;
+  }
+
+  .event-content p {
+    font-size: 0.9em;
+  }
+
+  /* Galerie photo */
+  .gallery-grid {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
   }
 }
 
@@ -622,6 +823,7 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     color: white;
+    padding: 15px;
 }
 
 /* Le reste de votre CSS pour le diaporama et le texte */
@@ -733,17 +935,17 @@ nav a:hover {
 
         .gallery-slideshow img {
             position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0; /* Rend toutes les images transparentes par défaut */
-    transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
-    /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
-    /* min-height: 500px; */
-    /* min-width: none; */
-    /* display: none;  <-- Supprimez cette ligne */
-    /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+           object-position: center;
+           opacity: 0; /* Rend toutes les images transparentes par défaut */
+            transition: opacity 1s ease-in-out; /* Ajoute une transition douce sur l'opacité */
+            /* Assurez-vous que ces lignes N'EXISTENT PAS dans votre CSS pour cet élément : */
+            /* min-height: 500px; */
+            /* min-width: none; */
+           /* display: none;  <-- Supprimez cette ligne */
+           /* animation: fadeIn 1s ease-in-out; <-- Supprimez cette ligne */
         }
 
         .gallery-slideshow img.active {
@@ -762,7 +964,7 @@ nav a:hover {
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .gallery-slideshow img {
-                max-height: 400px;
+                max-height: auto;
             }
             .prev, .next {
                 font-size: 16px;
@@ -771,28 +973,62 @@ nav a:hover {
             }
         }
         @media (max-width: 480px) {
-            .gallery-slideshow img {
-                max-height: 300px;
-            }
+            
             .prev, .next {
                 font-size: 14px;
                 padding: 10px;
                 margin-top: -16px;
             }
+            .gallery-slideshow img {
+                max-height: auto;
+            }
         }
-/* Ajustements responsifs */
+
 @media (max-width: 768px) {
-    .page-banner3 {
-        min-height: 300px; /* Adaptez la hauteur minimale pour mobile */
-        height: auto;
-    }
-    .page-banner3 h1 { /* Ciblez directement h1 */
-        font-size: 2em;
-    }
-    .page-banner3 p { /* Ciblez directement p */
-        font-size: 1.2em;
-    }
-    /* ... le reste de vos règles média ... */
+  .page-banner3 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner3 h1 {
+    font-size: 2em;
+  }
+  .page-banner3 p {
+    font-size: 1.2em;
+  }
+
+  .page-banner {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner h1 {
+    font-size: 2em;
+  }
+  .page-banner p {
+    font-size: 1.2em;
+  }
+
+  .page-banner1 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner1 h1 {
+    font-size: 2em;
+  }
+  .page-banner1 p {
+    font-size: 1.2em;
+  }
+
+  .page-banner2 {
+    min-height: 600px; /* Pour correspondre à .page-banner sur mobile */
+    height: auto;
+  }
+  .page-banner2 h1 {
+    font-size: 2em;
+  }
+  .page-banner2 p {
+    font-size: 1.2em;
+  }
+  /* ... le reste de vos règles média ... */
 }
 
 
@@ -833,9 +1069,9 @@ nav a:hover {
 /* 6.1. General Section Styles */
 .club-presentation {
   background-color: white;
-  border-left: 0px solid #0b063b;
-  margin-top: 10px; /* Ajoute un espace de 10px au-dessus de la section */
-}
+  padding: 40px 0%;
+  text-align: center;
+  width: 100%;}
 
 .club-details,
 .club-values,
@@ -892,30 +1128,39 @@ nav a:hover {
   font-size: 1.1em;
   margin-bottom: 00px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px #0b063b(0, 0, 0, 0.1);
   text-align: justify;
   background-color: #ffffff;
   padding: 20px 0%;
   width: 100%;
 }
 
-.club-presentation {
-  background-color: white;
-  border-left: 0px solid #0b063b;
-}
+
 
 
 /* 6.2. Section Titles */
 .club-presentation h1
 {
   text-align: center;
+  margin-bottom: 30px;
   font-size: 3em;
-  color: black;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding-top: 35px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #0b063b;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+.club-presentation h1::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .club-details h2,
 .club-values h2,
@@ -928,8 +1173,26 @@ nav a:hover {
   color: #0056b3;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #0b063b;
+  
   width: 100%;
+  position: relative;
+}
+
+.club-details h2::after,
+.club-trainers h2::after,
+.club-schedule h2::after,
+.club-location h2::after,
+.club-values h2::after
+{
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* 6.3. Subtitles */
@@ -1086,22 +1349,32 @@ nav a:hover {
 /* ===================================== */
 .contact-section {
   background-color: #ffffff;
-  padding: 20px 0%;
+  padding: 0px 0%;
   width: 100%;
 }
 
-.contact-section h2 {
-  
+.contact-section h2 { 
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
   
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */  
+}
+.contact-section h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .contact-header p{
@@ -1145,6 +1418,24 @@ nav a:hover {
 .contact-column a:hover {
   color: #ffcc00;
   text-decoration: underline;
+}
+
+@media(max-width: 768px) {
+  
+.contact-section h2{
+    font-size: 2em;
+  }
+  .contact-section h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 }
 
 /* ===================================== */
@@ -1204,7 +1495,7 @@ nav a:hover {
 .form-group textarea:focus {
   border-color: #0b063b;
   outline: none;
-  box-shadow: 0 0 5px #0b063b(255, 204, 0, 0.5);
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
 }
 
 .form-group textarea {
@@ -1273,13 +1564,26 @@ nav a:hover {
 
 .partenaires h2 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 50px;
-    margin-bottom: 10px;
-    /* Vous avez deux 'border-bottom' ici, je conserve le dernier qui est appliqué */
-    border-bottom: 2px solid #0b063b;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.partenaires h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .partenaires-logos {
@@ -1301,25 +1605,56 @@ nav a:hover {
     transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+.partenaires h2{
+    font-size: 2em;
+  }
+  .partenaires h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
 /* --- Styles pour la nouvelle section "À Propos" (.about-us) --- */
 .about-us {
-    background-color:white; /* Fond plus clair */
-;
-    padding: 40px 0;
-    margin-bottom: 10px;
+    background-color:white; /* Fond plus clair */;
+    padding: 0px 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px #0b063b(0, 0, 0, 0.05);
     text-align: center; /* Centre le titre */
 }
 
 .about-us h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+  text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
 }
+
+.about-us h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 .about-content {
     display: flex; /* Utilise Flexbox pour aligner image et texte */
@@ -1329,15 +1664,50 @@ nav a:hover {
 }
 
 .about-image {
-    width: 50%; /* Largeur de l'image */
-    max-width: 300px 0; /* Largeur maximale pour les écrans larges */
-    height: 200px 0;
+    width: 60%; /* Largeur de l'image */
+    max-width: 700px; /* Largeur maximale pour les écrans larges */
+    height: auto; /* La hauteur s'ajuste pour maintenir les proportions */
     border-radius: 8px;
     box-shadow: 0 4px 8px #0b063b(0, 0, 0, 0.1);
 }
 
 .about-content div {
     flex: 1; /* Le texte prend l'espace restant */
+}
+
+@media (max-width: 768px) {
+.about-us h2{
+    font-size: 2em;
+  }
+  .about-us h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
+.btn-gauche {
+  display: inline-block;
+  background-color: #0b063b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+  border: 2px solid #0b063b; /* Bordure du bouton */
+}
+
+.btn-gauche:hover {
+  background-color: white;
+  color: #0b063b;
 }
 
 /* Styles pour les boutons d'appel à l'action */
@@ -1369,6 +1739,7 @@ nav a:hover {
     color: #0b063b;
 }
 
+
 .cta-text {
     font-size: 1.1em;
     font-style: italic;
@@ -1386,10 +1757,68 @@ nav a:hover {
 }
 
 .why-choose-us h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #0b063b;
+    text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.why-choose-us h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .why-choose-us h2{
+    font-size: 2em;
+    max-width: 95%;
+  }
+  .why-choose-us h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+   .main-content h2:not(.why-choose-us h2) {
+        max-width: 95%; /* Limite la largeur du titre à 95% du conteneur */
+        margin-left: auto; /* Centre le titre horizontalement */
+        margin-right: auto; /* Centre le titre horizontalement */
+        /* Ajoutez un padding horizontal pour éviter que le texte ne touche les bords sur de très petits écrans */
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur totale */
+    }
+
+    /* OU, si vous voulez cibler spécifiquement les h2 dans la section "about-us" et "upcoming-events" et "partenaires" */
+    .why-choose-us h2,
+    .about-us h2,
+    .upcoming-events h2,
+    .partenaires h2 {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+
 }
 
 .benefits-grid {
@@ -1457,10 +1886,44 @@ nav a:hover {
 }
 
 .upcoming-events h2 {
-    font-size: 3em;
-    color: #0b063b;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #0b063b;
+   text-align: center;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 35px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+
+.upcoming-events h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media(max-width: 768px){
+  .upcoming-events h2{
+    font-size: 2em;
+  }
+  .upcoming-events h2::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 }
 
 .event-preview {
@@ -1547,22 +2010,46 @@ nav a:hover {
   text-align: center;
   margin-bottom: 30px;
   font-size: 3em;
-    color: black; /* Ou une autre couleur de votre palette */
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
+}
+.inscription-section h2::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .inscription-section h3 {
-    font-size: 1.8em;
-    color: #0b063b; /* Ou une autre couleur de votre palette */
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+    text-align: center;
+  font-size: 1.8em;
+  color: #0b063b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */ 
+}
+
+.inscription-section h3::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); 
 }
 
 .inscription-section p{
@@ -1571,7 +2058,7 @@ nav a:hover {
 
 .intro-text {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #444;
 }
 
@@ -1582,6 +2069,46 @@ nav a:hover {
   gap: 15px;
   margin: 30px 0;
 }
+
+
+ @media(max-width: 768px){
+  .inscription-section h3{
+    font-size: 1.5em;
+  }
+
+  .inscription-section h3::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+  }
+
+  .inscription-section h2{
+  font-size: 2em;
+  text-align: center;
+  }
+
+  .inscription-section h2::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+  }
+}
+
+
 
 .btn-download {
   display: inline-block;
@@ -1759,12 +2286,26 @@ footer {
 
 /* Responsive Club */
 @media (max-width: 768px) {
+  .main-content section,
+  .main-content h1,
+  .main-content h2,
+  .main-content p,
+  .main-content .btn-cta,
+  .main-content .btn-link {
+    text-align: center;
+  }
   .club-section .club-container {
     flex-direction: column;
   }
   .club-section .club-image,
   .club-section .club-text {
     width: 100%;
+  }
+
+  .club-presentation,
+  .club-schedule,
+  .club-location{
+    text-align: center;
   }
 
   .club-presentation h1,
@@ -1774,11 +2315,31 @@ footer {
   .club-schedule h2,
   .club-location h2 {
     font-size: 2em;
+    text-align: center;
+  }
+
+  .club-presentation h1::after,
+  .club-details h2::after,
+  .club-values h2::after,
+  .club-trainers h2::after,
+  .club-schedule h2::after,
+  .club-location h2::after {
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
   }
 
   .club-presentation h3,
   .details-section h3 {
     font-size: 1.5em;
+    text-align: center;
   }
 
   .trainer-cards {
@@ -1793,15 +2354,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .club-presentation,
-  .club-details,
-  .club-values,
-  .club-trainers,
-  .club-schedule,
-  .club-location {
-    padding: 20px 15px;
-  }
-
   .club-schedule th,
   .club-schedule td {
     padding: 8px 10px;
@@ -1879,28 +2431,42 @@ footer {
   justify-content: center;
   align-items: stretch; /* MODIFIÉ : pour que les cartes aient la même hauteur */
   gap: 30px;
-  margin-top: 30px;
-  margin-bottom: 50px;
   /* Assurez-vous que ces propriétés sont ABSENTES si elles étaient là avant : */
   /* flex-wrap: wrap; */
   /* overflow-x: auto; */
   /* white-space: nowrap; */
   /* scrollbar-width, scrollbar-color, ::-webkit-scrollbar... */
   background-color: #ffffff;
-  padding: 20px 0%;
+  padding: 40px 0%;
   width: 100%;
 }
 
 /* Titre de la section des événements */
 .events-list h3 {
   width: 100%; /* Prend toute la largeur pour centrer le titre */
-  text-align: center;
-  margin-bottom: 20px; /* Espacement après le titre */
-  font-size: 3em; /* Taille du titre */
-  color: black; /* Couleur de titre, similaire à vos liens de navigation */
-  border-bottom: 2px solid #0b063b; /* Ligne de séparation */
-  padding-bottom: 5px;
+ text-align: center;
+  margin-bottom: 30px;
+  font-size: 3em;
+  color: #0b063b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* Supprimez padding-bottom et border-bottom d'ici */
+  position: relative; /* AJOUTEZ CECI */
+  padding-bottom: 5px; /* Ajustez ce padding si vous voulez plus d'espace entre le texte et la barre */
 }
+
+.events-list h3::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 /* Style de chaque carte d'événement */
 .event-card {
@@ -2003,16 +2569,28 @@ footer {
   }
 
   .events-list {
-    padding: 20px 10px;
+    text-align: center;
   }
+  .events-list h3{
+    font-size: 2em;
+    text-align: center;
+  }
+   .events-list h3::after{
+    content: '';
+    display: block;
+    width: 95%; /* Ajustez cette largeur si vous voulez qu'elle soit plus courte/longue sur mobile */
+    height: 2px;
+    background-color: #0b063b; /* La couleur de votre barre */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px; /* AJOUTEZ CECI : Une grande valeur pour des bords complètement arrondis (forme de capsule) */
+   }
 
   .event-card {
     width: 90%; /* Les cartes prennent presque toute la largeur sur les petits écrans */
     max-width: 350px; /* Limite la largeur maximale pour ne pas être trop grandes */
-  }
-
-  .events-list h3 {
-    font-size: 2em;
   }
 }
 
@@ -2560,14 +3138,39 @@ footer {
   color: #0b063b;
   padding: 90px;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 3em;
-    color: #0b063b; /* Ou une autre couleur de votre palette */
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #0b063b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0b063b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.manual-gallery-titre h1::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .manual-gallery-titre h1{
+    font-size: 2em;
+  }
+  .manual-gallery-titre h1::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 }
 
 
