@@ -2231,6 +2231,65 @@ footer {
   color: white;
 }
 
+.socials-container{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.socials-container a{
+  background-color: white;
+  padding: 1em;
+  border-radius: 50%;
+  height: 64px;
+  width: 64px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 10px #0b063b(0, 0, 0, 0.05);
+}
+.socials-container a svg{
+  height: 32px;
+  color: #0b063b;
+}
+.socials-container a::before{
+  content: attr(data-social);
+  position: absolute;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  box-shadow: 0 5px 10px #0b063b(0, 0, 0, 0.05);
+  transform: translateY(-30px) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover{
+  background-color: var(--accent-color);
+  fill: white;
+}
+.socials-container a::after{
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid var(--accent-color);
+  transform: translateY(0) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover::before{
+  transform: translateY(-65px) rotate(0);
+  opacity: 1;
+}
+.socials-container a:hover::after{
+  transform: translateY(-42px) rotate(0);
+  opacity: 1;
+}
+
 
 /* Styles ajoutés pour les cartes Google Maps responsives */
 .map-container {
@@ -3202,3 +3261,120 @@ footer {
     transform: scale(1.05); /* Léger agrandissement (cet effet reste le même) */
 }
 
+/* Styles pour le bouton d'ouverture du menu latéral (hamburger) */
+#open-sidebar-button {
+  display: none; /* Masqué par défaut sur les grands écrans */
+  background: none;
+  border: none;
+  padding: 1em;
+  margin-left: auto; /* Pour le positionner à droite si le header est en flex */
+  cursor: pointer;
+}
+
+/* Styles pour le bouton de fermeture du menu latéral */
+#close-sidebar-button {
+  display: none; /* Masqué par défaut sur les grands écrans */
+  background: none;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+}
+
+/* Styles pour l'overlay (fond sombre derrière le menu latéral) */
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0; /* Prend toute la largeur et hauteur de la fenêtre */
+  z-index: 9; /* Positionné sous le menu, mais au-dessus du contenu principal */
+  display: none; /* Masqué par défaut */
+}
+
+/* Media query pour les écrans mobiles (largeur max 768px) */
+@media screen and (max-width: 768px) {
+  /* Assurez-vous que les boutons d'ouverture et de fermeture du menu sont affichés sur mobile */
+  #open-sidebar-button,
+  #close-sidebar-button {
+    display: block;
+  }
+
+  /* Styles de la barre de navigation sur mobile (menu latéral) */
+  nav#navbar {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Cache le menu initialement, hors écran à droite */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    width: min(15em, 100%); /* Largeur du menu, ajustez si nécessaire */
+    z-index: 10;
+    border-left: 1px solid #0b063b; /* Utilisation directe de la couleur */
+    background-color: #0b063b; /* Utilisation directe de la couleur */
+    transition: right 300ms ease-in-out;
+
+    /* NOUVEAU/MODIFIÉ : Propriétés Flexbox pour organiser les éléments du menu */
+    display: flex; /* Active Flexbox */
+    flex-direction: column; /* Empile les enfants verticalement */
+    
+    padding-top: 1em; /* Espace en haut du menu */
+    padding-left: 1.5em; /* Padding pour les liens à gauche */
+    padding-right: 1.5em; /* Padding général à droite pour le menu et la croix */
+  }
+
+  /* Quand la nav a la classe 'show', elle glisse en position visible */
+  nav#navbar.show {
+    right: 0;
+  }
+
+  /* Styles pour le bouton de fermeture du menu latéral */
+  #close-sidebar-button {
+    background: none;
+    border: none;
+    padding: 0; /* Réinitialiser le padding pour un contrôle plus précis */
+    cursor: pointer;
+    
+    /* NOUVEAU/MODIFIÉ : Pour pousser la croix à droite */
+    margin-right: auto; /* Pousse le bouton à l'extrême droite de l'espace disponible */
+    margin-bottom: 1em; /* Espace sous le bouton avant les liens de navigation */
+  }
+
+/* Ajustements pour les liens directs dans le menu latéral */
+  nav#navbar > a,
+  nav#navbar > .dropdown {
+    width: 100%;
+    text-align: left; /* Assure que les liens principaux sont alignés à gauche sur mobile */
+    padding: 0.8em 0;
+    display: block;
+  }
+  
+  /* Pour gérer les dropdowns à l'intérieur du menu latéral */
+  nav#navbar .dropdown .dropdown-content {
+      position: static;
+      background-color: var(#0b063b);
+      width: 100%;
+      box-shadow: none;
+      display: none;
+      padding-left: 1em; /* Indentation pour les sous-liens */
+  }
+
+  /* Règle pour afficher les sous-menus des dropdowns */
+  nav#navbar .dropdown:hover .dropdown-content,
+  nav#navbar .dropdown.active .dropdown-content {
+      display:none;
+  }
+
+  nav#navbar .dropdown .dropdown-content.show {
+    display: contents;
+}
+
+  nav#navbar .dropdown a.dropbtn {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      width: 100%;
+      padding-left: 0; 
+  }
+
+  /* NOUVEAU/MODIFIÉ : Aligner les sous-liens des dropdowns à gauche sur mobile */
+  nav#navbar .dropdown-content a {
+      display: block;
+      text-align: left; /* Force l'alignement à gauche pour les sous-liens sur mobile */
+  }
+}
