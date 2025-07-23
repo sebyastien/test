@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASSOA Karaté - Le Karaté</title>
+    <link rel="stylesheet" href="projet.css" />
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="logo img"><a href="index.html">
+                    <img src="images/lg.png" alt="logo">
+                </a></div>
+        
+                 <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+        </button>
+         
+         
+        <nav class="nav-links"id="navbar">
+            <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.7 209.69q7.23 7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+                    </button>
+             <a href="index.html">Accueil</a>
+             <div class="dropdown">
+                <a href="discipline.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Disciplines Pratiquées</a> 
+                <div class="dropdown-content">
+                    <a href="karaté.html">Karaté</a>
+                    <a href="krav-maga.html">Krav Maga / Self Défense</a>
+                    <a href="body.html">Body Karaté</a>
+                    <a href="discipline.html">Voir tous les Disciplines</a>
+                    </div>
+            </div>
+            <div class="dropdown">
+                <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
+                <div class="dropdown-content">
+                    <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
+                    <a href="vaureal.html">Vauréal</a>
+                    <a href="pontoise.html">Pontoise</a>
+                    <a href="le-club.html">Voir tous les clubs</a>
+                </div>
+            </div>
+            <div class="dropdown">
+            <a href="evenements.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Événements</a>
+            <div class="dropdown-content">
+                    <a href="evenements.html">Prochains Evènements</a>
+                    <a href="evenements-passes.html">Evènements passés</a>
+                </div>
+            </div>
+            <a href="inscription.html">Inscription</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+    
+    <main class="main-content">
+        <section class="page-banner2">
+            <video autoplay muted loop playsinline class="background-video">
+                <source src="video/jup.mp4" type="video/mp4"> </video>
+            <h1>Le Karaté à l'ASSOA Karaté</h1>
+        </section>
+        <section class="discipline-presentation" id="histoire">
+            <h1>Le Karaté</h1>
+            <p>Le Karaté est plus qu'un simple sport de combat ; c'est un art martial traditionnel japonais qui forge le corps et l'esprit. À l'ASSOA Karaté, nous enseignons le Karaté dans le respect de ses valeurs fondamentales : discipline, persévérance, respect et maîtrise de soi. Que vous soyez débutant ou confirmé, jeune ou adulte, nos cours sont conçus pour vous permettre de progresser à votre rythme et d'atteindre vos objectifs.</p>
+        </section>
+
+        <section class="discipline-section" id="histoire">
+            <h2>Histoire et Philosophie du Karaté</h2>
+            <p>Originaire d'Okinawa, le Karaté (littéralement "la main vide") s'est développé comme une méthode d'autodéfense sans armes. Il a ensuite été formalisé et introduit au Japon, d'où il s'est répandu dans le monde entier. Au-delà des techniques de frappe avec les poings, les pieds, les genoux et les coudes, le Karaté intègre une profonde philosophie axée sur le développement personnel, la discipline mentale et l'éthique martiale. Il enseigne à canaliser son énergie, à contrôler ses mouvements et à respecter son adversaire, transformant la pratique en une voie de perfectionnement.</p>
+        </section>
+
+        <section class="discipline-section" id="bienfaits">
+            <h2>Les Bienfaits de la Pratique du Karaté</h2>
+            <p>La pratique régulière du Karaté offre de nombreux avantages, tant physiques que mentaux :</p>
+            <ul>
+                <li><strong>Amélioration physique :</strong> Développement de la force, de la vitesse, de l'endurance, de la flexibilité et de la coordination.</li>
+                <li><strong>Maîtrise de soi :</strong> Apprentissage de la gestion des émotions et de la concentration.</li>
+                <li><strong>Confiance en soi :</strong> Renforcement de l'estime de soi grâce aux progrès et à la capacité de se défendre.</li>
+                <li><strong>Discipline et respect :</strong> Acquisition de valeurs essentielles telles que la rigueur, le respect des règles et des autres pratiquants.</li>
+                <li><strong>Réduction du stress :</strong> La pratique est un excellent exutoire et aide à libérer les tensions.</li>
+            </ul>
+        </section>
+
+        <section class="discipline-section" id="cours-ages">
+            <h2>Nos Cours de Karaté par Age</h2>
+            <p>L'ASSOA Karaté propose des programmes adaptés à chaque tranche d'âge, permettant à chacun de s'épanouir dans la pratique du Karaté :</p>
+            
+            <h3>Karaté Enfants (Dès 4 ans)</h3>
+            <p>Nos cours pour les jeunes karatékas sont conçus pour être ludiques et éducatifs. Les enfants apprennent les bases du karaté par le jeu, développent leur motricité, leur équilibre, leur concentration et le respect des règles. C'est une excellente façon de canaliser leur énergie tout en bâtissant une base solide pour leur développement physique et mental.</p>
+
+            <h3>Karaté Adolescents (À partir de 12 ans)</h3>
+            <p>Pour les adolescents, la pratique du Karaté est une voie vers la maîtrise de soi et le renforcement du caractère. Les cours se concentrent sur l'approfondissement des techniques, l'étude des katas et la préparation au kumite (combat sportif), tout en renforçant la discipline et la confiance en leurs capacités.</p>
+
+            <h3>Karaté Adultes</h3>
+            <p>Que vous soyez débutant ou expérimenté, nos cours pour adultes sont ouverts à tous. Nous abordons l'ensemble des aspects du Karaté : kihon (fondamentaux), kata (formes) et kumite (combat). C'est une pratique complète pour entretenir sa forme physique, développer son mental et acquérir des compétences en autodéfense.</p>
+        </section>
+
+        <section class="videos-section" id="vidéo">
+            <h2>Découvrez le Karaté en Vidéo</h2>
+            <div class="video-gallery">
+                <div class="video-item">
+                    <h3>Kata : La Forme et la Maîtrise</h3>
+                    <video controls width="100%">
+                        <source src="video/kata.mp4" type="video/mp4"> Votre navigateur ne prend pas en charge la balise vidéo.
+                    </video>
+                    <p>Découvrez la beauté et la précision des Kata, séquences de mouvements codifiées simulant un combat réel.</p>
+                </div>
+                <div class="video-item">
+                    <h3>Kumite : Le Combat Sportif</h3>
+                    <video controls width="100%">
+                        <source src="video/nico.mp4" type="video/mp4"> Votre navigateur ne prend pas en charge la balise vidéo.
+                    </video>
+                    <p>Assistez à un aperçu du Kumite, le combat libre où les techniques sont mises en application.</p>
+                </div>
+            </div>
+        </section>
+        <h3>Prêt(e) à Développer Vos Capacités de Karatéka ?</h3>
+                    <h4>Le moment est venu de rejoindre une communauté dynamique. Que vous soyez débutant(e) ou que vous ayez déjà des bases, nos cours de Karaté vous attendent.</h4>
+        <a href="inscription.html#inscription" class="btn-link">En savoir plus sur votre inscription</a>
+
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons"> <a href="https://votre-lien-facebook-ici.com" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://votre-lien-instagram-ici.com" target="_blank">
+                    <img src="images/Instagram.png" alt="Instagram">
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Retour en haut">↑</button>
+    <script src="script-en-haut.js"></script>
+    <script src="script-hamburger.js"></script>
+    <script src="script-menu-droite.js"></script>
+
+</body>
+</html>

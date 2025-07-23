@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASSOA Karaté - Nos Disciplines</title>
+    <link rel="stylesheet" href="projet.css" />
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="logo img"><a href="index.html">
+                        <img src="images/lg.png" alt="logo">
+                </a></div>
+        
+                    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87-7.22-7.13-17.9-7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+        </button>
+          
+          
+        <nav class="nav-links"id="navbar">
+            <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+                    </button>
+                   <a href="index.html">Accueil</a>
+                   <div class="dropdown">
+                     <a href="discipline.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Disciplines Pratiquées</a> 
+                     <div class="dropdown-content">
+                         <a href="karaté.html">Karaté</a>
+                         <a href="krav-maga.html">Krav Maga / Self Défense</a>
+                         <a href="body.html">Body Karaté</a>
+                         <a href="discipline.html">Voir toutes les Disciplines</a>
+                         </div>
+                 </div>
+                 <div class="dropdown">
+                     <a href="le-club.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Le Club</a> 
+                     <div class="dropdown-content">
+                         <a href="soa.html">Saint-Ouen l'Aumône (SOA)</a>
+                         <a href="vaureal.html">Vauréal</a>
+                         <a href="pontoise.html">Pontoise</a>
+                         <a href="le-club.html">Voir tous les clubs</a>
+                     </div>
+                 </div>
+                 <div class="dropdown">
+                 <a href="evenements.html" class="dropbtn" aria-haspopup="true" aria-expanded="false">Événements</a>
+                 <div class="dropdown-content">
+                         <a href="evenements.html">Prochains Evènements</a>
+                         <a href="evenements-passes.html">Evènements passés</a>
+                     </div>
+                 </div>
+                 <a href="inscription.html">Inscription</a>
+                 <a href="contact.html">Contact</a>
+         </nav>
+    </header>
+
+    <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+    
+    <main class="main-content"></main>
+        <section class="page-banner2">
+            <video autoplay muted loop playsinline class="background-video">
+                <source src="video/jup.mp4" type="video/mp4">
+            </video>
+            <h1>Nos Disciplines Pratiquées à l'ASSOA Karaté</h1>
+        </section>
+
+
+        <section class="discipline-presentation">
+            <h1>Nos Différentes Pratiques</h1>
+            <p>À l'ASSOA Karaté, nous proposons une gamme variée de disciplines pour répondre aux besoins et
+                 aux objectifs de chacun. Que vous cherchiez à maîtriser un art martial traditionnel, à apprendre la self-défense, à améliorer votre forme physique ou à adapter la pratique à des besoins spécifiques, nous avons le cours qu'il vous faut. Découvrez ci-dessous nos différentes pratiques :</p>
+        </section>
+
+        <section class="discipline-section">
+            <h2>Le Karaté</h2>
+<p>Le Karaté est l'art martial traditionnel japonais par excellence. Il permet de développer la discipline, la maîtrise de soi, la concentration, et la coordination. Nos cours de karaté sont adaptés à tous les âges et niveaux :</p>
+            <ul>
+                <li><strong>Karaté Enfants :</strong> Dès 4 ans, les enfants apprennent les bases du karaté de manière ludique, développant leur motricité et leur confiance en soi dans un environnement sécurisé.</li>
+                <li><strong>Karaté Adolescents & Adultes :</strong> Pour les plus grands, les cours se concentrent sur l'apprentissage des techniques fondamentales (kihon), des formes (kata) et des applications en combat (kumite), tout en cultivant les valeurs traditionnelles du Budo.</li>
+            </ul>
+            <p>Visitez notre page dédiée pour en savoir plus :</p> <p>
+            <a href="karaté.html" class="btn-link">En savoir plus sur le Karaté</a></p>
+        </section>
+
+        <section class="discipline-section">
+            <h2>Krav Maga / Self-Défense</h2>
+            <p>Le Krav Maga est une méthode de self-défense moderne, pratique et efficace, conçue pour la vie réelle. Axée sur des techniques simples et intuitives, elle permet de faire face rapidement à diverses situations d'agression.</p>
+            <ul>
+                <li><strong>À partir de 12 ans :</strong> Nos cours sont ouverts aux adolescents et adultes désireux d'apprendre à se défendre et à gérer des situations de conflit avec confiance.</li>
+                <li>Développe la vigilance, la capacité de réaction et la gestion du stress en situation d'urgence.</li>
+            </ul>
+            <p>Visitez notre page dédiée pour en savoir plus : </p> <p>
+            <a href="krav-maga.html" class="btn-link">En savoir plus sur le Krav Maga</a></p>
+        </section>
+
+        <section class="discipline-section">
+            <h2>Body Karaté</h2>
+            <p>Le Body Karaté est une discipline dynamique qui combine les mouvements du karaté avec des exercices de fitness et de cardio. C'est un excellent moyen de se dépenser, d'améliorer sa condition physique et de tonifier son corps, sans contact.</p>
+            <ul>
+                <li><strong>À partir de 14 ans :</strong> Idéal pour les adolescents et adultes qui recherchent une activité sportive complète, ludique et énergisante.</li>
+                <li>Améliore l'endurance, la coordination, et le renforcement musculaire.</li>
+            </ul>
+            <p>Visitez notre page dédiée pour en savoir plus : </p> <p>
+            <a href="body.html" class="btn-link">En savoir plus sur le Body Karaté</a></p>
+        </section>
+
+        <section class="discipline-section">
+            <h2>Karaté Santé & Handikaraté</h2>
+            <p>Le Karaté est un art martial qui peut être adapté à tous, quelle que soit la condition physique ou le handicap. Nos programmes spécifiques visent à rendre la pratique accessible et bénéfique pour chacun :</p>
+            <ul>
+                <li><strong>Karaté Santé :</strong> Cours adaptés pour le bien-être physique et mental, axés sur la mobilité, l'équilibre et l'entretien corporel, pour les personnes ayant des besoins spécifiques ou souhaitant une pratique douce.</li>
+                <li><strong>Handikaraté :</strong> Une approche inclusive de l'art martial, où les techniques sont adaptées pour permettre aux personnes en situation de handicap de pratiquer le karaté, de développer leurs capacités et de s'épanouir au sein de la discipline.</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Nous trouver</h3>
+                <p>Gymnase Roger Couderc</p>
+                <p>33 Rue du Mail</p>
+                <p>95310 Saint-Ouen-l’Aumône</p>
+                <p><a href="https://www.google.com/maps/search/Gymnase+Roger+Couderc+33+Rue+du+Mail+95310+Saint-Ouen-l%E2%80%99Aum%C3%B4ne" target="_blank">Voir sur la carte</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Contactez-nous</h3>
+                <p>Téléphone : <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>Email : <a href="mailto:contact@assoakarate.fr">contact@assoakarate.fr</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons"> <a href="https://votre-lien-facebook-ici.com" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://votre-lien-instagram-ici.com" target="_blank">
+                    <img src="images/Instagram.png" alt="Instagram">
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ASSOA Karaté. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Retour en haut">↑</button>
+    <script src="script-en-haut.js"></script>
+    <script src="script-hamburger.js"></script>
+    <script src="script-menu-droite.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+-changer la photo d'acceuil
+- enlever instructeur qualifié et dvp complet pour mettre krav maga/self défense body karaté, karaté enfants et karaté santé/handi-karaté, prapration au grade (du 1er au 7eme dan) (ok)
+- créer une section dans le club "les différentes pratiques" où l'on retrouve un bref résumé des différentes activités proposés par le club ainsi que quelques photos
+- créer un lieu page acceuil qui redirige vers cette page au meme nivezau que decouvrer nos dojos et horaires (bouton) (ok)
+-ajouter sponsor Vauréal soa pontoise (ok)
+-rajouter discipline pratiquée (karaté santé)
+-rajouter cristophe krav 
