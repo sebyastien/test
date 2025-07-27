@@ -3619,7 +3619,7 @@ footer {
   .discipline-section h2::after {
     content: '';
     display: block;
-    width: 95%; /* Set to 95% width for mobile */
+    width: 100%; /* Set to 95% width for mobile */
     height: 2px;
     background-color: #0056b3; /* La couleur de votre barre */
     position: absolute;
@@ -3660,7 +3660,7 @@ footer {
     background-color: white; /* Un léger gris pour la section vidéo pour la distinguer */
     margin-bottom: 20px;
     border-radius: 8px;
-   
+
     text-align: center; /* Pour centrer le titre */
 }
 
@@ -3711,8 +3711,7 @@ footer {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1.5em;
-
-}
+  }
 
 .videos-section .video-item video {
     max-width: 100%;
@@ -3750,7 +3749,11 @@ footer {
         width: 100%; /* Assure que la bordure prend toute la largeur si le titre est à gauche */
     }
     .discipline-section h3 { /* Pour les sous-titres des cours par âge */
-        text-align: left; /* Aligne les titres de section à gauche sur mobile */
+        text-align: center; /* Aligne les titres de section à gauche sur mobile */
+        font-size: 1.5em;
+    }
+    .videos-section h2{
+      text-align: center;
     }
 }
 

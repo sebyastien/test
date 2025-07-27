@@ -1,0 +1,59 @@
+CREATE DATABASE IF NOT EXISTS qr_restaurant;
+USE qr_restaurant;
+
+-- Table des tables du restaurant
+CREATE TABLE tables_restaurant (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numero_table VARCHAR(10) NOT NULL,
+    qr_code_url TEXT
+);
+
+-- Table des plats du menu
+CREATE TABLE menus (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    description TEXT,
+    prix DECIMAL(10, 2) NOT NULL,
+    image_url TEXT,
+    categorie VARCHAR(50)
+);
+
+-- Table des commandes
+CREATE TABLE commandes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    table_id INT,
+    date_heure DATETIME DEFAULT CURRENT_TIMESTAMP,
+    statut ENUM('en_cours', 'prete', 'livree') DEFAULT 'en_cours',
+    total DECIMAL(10, 2),
+    FOREIGN KEY (table_id) REFERENCES tables_restaurant(id)
+);
+
+-- Détails de chaque commande
+CREATE TABLE commandes_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    commande_id INT,
+    menu_id INT,
+    quantite INT DEFAULT 1,
+    FOREIGN KEY (commande_id) REFERENCES commandes(id),
+    FOREIGN KEY (menu_id) REFERENCES menus(id)
+);
+
+-- Utilisateurs (admin, cuisinier, serveur)
+CREATE TABLE utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    mot_de_passe VARCHAR(255),
+    role ENUM('admin', 'serveur', 'cuisinier') DEFAULT 'serveur'
+);
+
+-- Paiements
+CREATE TABLE paiements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    commande_id INT,
+    montant DECIMAL(10, 2),
+    date_paiement DATETIME DEFAULT CURRENT_TIMESTAMP,
+    methode VARCHAR(50),
+    statut ENUM('reussi', 'echoue') DEFAULT 'reussi',
+    FOREIGN KEY (commande_id) REFERENCES commandes(id)
+);
