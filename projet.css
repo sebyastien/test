@@ -1876,7 +1876,7 @@ nav a:hover {
     height: 200px; /* Gardez cette hauteur pour les images */
     object-fit: contain; /* S'assure que l'image tient dans le cadre sans être coupée et sans déformer */
     margin-bottom: 15px;
-}
+  }
 
 .benefit-item h3 {
     font-size: 1.5em;
@@ -3779,4 +3779,96 @@ footer {
     .videos-section .video-item h3 {
         font-size: 1.3em;
     }
+}
+
+.footer-links {
+    display: inline-flex;
+    gap: 30px; /* espace entre chaque lien */
+    flex-wrap: wrap; /* passe à la ligne si l’écran est petit */
+    justify-content: center; /* centre horizontalement */
+    width: 100%; /* s'assure que le flex prend toute la largeur */
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+.parametre h1{
+  font-size: 3em;
+  color: #0b063b;
+  padding: 90px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.parametre h1::after {
+  content: '';
+  display: block;
+  width: 100%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 900px) {
+  .parametre h1{
+    font-size: 2em;
+  }
+  .parametre h1::after {
+  content: '';
+  display: block;
+  width: 95%; /* MODIFIEZ CECI À 90% */
+  height: 2px;
+  background-color: #0b063b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
+.privacy-policy {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.privacy-policy h2 {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0077b6;
+}
+
+.privacy-policy p {
+    margin-bottom: 15px;
+}
+
+.privacy-policy ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.privacy-policy ul li {
+    margin-bottom: 5px;
+    list-style: disc;
 }
